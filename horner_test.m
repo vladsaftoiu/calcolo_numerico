@@ -4,10 +4,7 @@ function h = horner_test()
 % 	simple line function
 % 	parabole
 
-	%f = @(x) 3*x
-	%hv = @(x) horner([3], x)
-
-	abscissas = generate_abscissas(-10, 10, 50);
+	abscissas = linspace(-10, 10, 50);
 	
 	function_values = arrayfun(@(x) 3*x, abscissas);
 	horner_values = arrayfun(@(x) horner([0, 3], x), abscissas);

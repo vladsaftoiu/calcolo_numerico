@@ -1,11 +1,12 @@
-function y = horner_general( a, x, xs )
-% generalized horner's algorithm evaluating the newton polinomial
+function [y] = horner_general( xx, x, f )
+% generalized horner's algorithm evaluating the newton polinomial in a
+% given point x
 
-	n = length(a);
-	y = a(n);
+	n = length(f);
+	y = linspace(1,1,length(xx))*f(n);
 	
 	for i = n-1 : -1 : 1
-		y = y * (x - xs(i)) + a(i);
+        y = y.*(xx - x(i)) + f(i);
 	end
 	
 end
