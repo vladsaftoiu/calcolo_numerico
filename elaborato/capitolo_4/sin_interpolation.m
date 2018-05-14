@@ -1,8 +1,12 @@
 function [] = sin_interpolation( )
     ab = linspace(0, 2*pi, 50);
-    xi = pi*[0, 1, 2];
+    %xi = pi*[0, 1, 2];
+    xi = linspace(0, 2*pi, 4);
     
-    plot(newton(xi, sin(xi), ab), 'color', 'r'); %red
+    plot(sin(ab), '.k'); %black
     hold on;
-    plot(lagrange(xi, sin(xi), ab), 'color', 'b'); %blue
+    plot(newton(xi, sin(xi), ab), 'r'); %red
+    hold on;
+    plot(lagrange(xi, sin(xi), ab), 'b'); %blue
+    legend('sin', 'newton', 'lagrange');
 end
