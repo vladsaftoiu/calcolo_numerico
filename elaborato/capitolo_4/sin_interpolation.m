@@ -1,30 +1,8 @@
-function [y] = lagrange( xi, fi, x )
-%LAGRANGE calcola il polinomio interpolante in forma di Lagrange
-%   xi: vettore delle ascisse
-%   fi: vettore delle ordinate
-%   x: punto da calcolare  
+function [] = sin_interpolation( )
+    ab = linspace(0, 2*pi, 50);
+    xi = pi*[0, 1, 2];
     
-    y = zeros(1, length(x));
-    
-    for k = 1 : size(x)
-        l = lagrange_c( xi,  x(k));
-        y(k) = sum(fi.*l);
-    end
+    plot(newton(xi, sin(xi), ab), 'color', 'r'); %red
+    hold on;
+    plot(lagrange(xi, sin(xi), ab), 'color', 'b'); %blue
 end
-
-function [y] = lagrange_c( xi, x )
-%LAGRANGE_C calcola i coefficienti Lkn di lagrange
-%   xi: vettore delle ascisse
-%   x: punto da calcolare
-
-    n = length(xi);
-    y = ones(1, n);
-    for k = 1 : n
-        for j = 1 : n
-            if (k~=j) 
-               y(k) = y(k) * (x-xi(j))/(xi(k)-xi(j));
-            end
-        end
-    end
-end
-
