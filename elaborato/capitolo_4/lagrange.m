@@ -6,7 +6,7 @@ function [y] = lagrange( xi, fi, x )
     
     y = zeros(1, length(x));
     
-    for k = 1 : size(x)
+    for k = 1 : length(x)
         l = lagrange_c( xi,  x(k));
         y(k) = sum(fi.*l);
     end
@@ -22,7 +22,7 @@ function [y] = lagrange_c( xi, x )
     for k = 1 : n
         for j = 1 : n
             if (k~=j) 
-               y(k) = y(k) * (x-xi(j))/(xi(k)-xi(j));
+               y(k) = y(k) * (x-xi(j))/( xi(k)-xi(j) );
             end
         end
     end
