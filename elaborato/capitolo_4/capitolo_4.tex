@@ -3,10 +3,34 @@
 	\subsection{Esercizio 4.1}
 Scrivere una function Matlab che implementi il calcolo del polinomio interpolante di grado $n$ in forma di Lagrange. La forma della function deve essere del tipo \texttt{ y = lagrange( xi, fi, x ) }.
 
-\lstinputlisting{./capitolo_4/newton.m}
+La base di Lagrange è così definita:
+\begin{equation}
+	L_{kn} := \prod_{j=0,j\neq{k}}^n\frac{x-x_j}{x_k-x_j}
+\end{equation}
+La forma di Lagrange del polinomio interpolante è:
+\begin{equation}\label{lagrange_equation}
+	\sum_{k=0}^n f(x_k) L_{kn}(x)
+\end{equation}
+La function Matlab che implementa la \ref{lagrange_equation} è:
+\lstinputlisting{./capitolo_4/lagrange.m}
+
 
 	\subsection {Esercizio 4.2}
 Scrivere una function Matlab che implementi il calcolo del polinomio interpolante di grado $n$ in forma di Newton. La forma della function deve essere del tipo \texttt{ y = newton( xi, fi, x ) }
+
+La base di Newton è così definita: 
+\begin{empheq}[left=\empheqlbrace]{align}
+	& \omega_0(x):=1 \\
+	& \omega_1(x):=x-x_0 \\
+	& ... \\
+	& \omega_{i+1}(x):=(x-x_i)\omega_i(x)
+\end{empheq}
+La forma di Newton del polinomio interpolante rispetto alla base di Newton è:
+\begin{equation} \label{newton_equation}
+	\sum_{k=0}^n f[x_0, ... , x_k]\omega_k(x)
+\end{equation} 
+La function matlab che implementa \ref{newton_equation} è:
+\lstinputlisting{./capitolo_4/newton.m}
 
 	\subsection {Esercizio 4.3}
 Scrivere una function Matlab che implementi il calcolo del polinomio interpolante di Hermite. La forma della function deve essere del tipo \texttt{ y = newton( xi, fi, f1i, x ) }
