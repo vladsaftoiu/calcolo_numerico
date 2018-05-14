@@ -9,24 +9,32 @@ function [y] = hermite( xi, fi, f1i, x )
     
     % check that arrays are same size
     
-    ff = zeros(1, length());
-    for i = 1 : length(ff)
-        if (mod(i,2)==0)
-            ff(i)=f1i(i/2);
-        else
-            ff(i)=fi/2+1;
-        end
+    fh = zeros(1, 2*n+2); %one by one merge of fi and f1i
+    xh = zeros(1, 2*n+2); %double the abscisssas
+    for i = 2 : 2 : 2*n+2
+            fh(i-1)=fi(i/2);
+            fh(i)=f1i(i/2);
+            
+            xh(i-1) = xi(i/2);
+            xh(i) = xi(i/2);
+    end
+    hfd = hermite_finite_differences( xh, fh, n );
+    
+    %horner general
+    y = hfd(n+1) * ones(size(x));
+    for l = n+1 : -1 : 1
+        y = y.*(x-xh(l)) + hfd(l);
     end
 end
 
-function [hfd] = hermite_finite_differences( x, fi )
+function [hfd] = hermite_finite_differences( xi, fi, n )
 
     for i= (2*n+1): -2 : 3
-        fi(i) = ( fi(i) - fi(i-2) ) / ( x(i) - x(i-2) );
+        fi(i) = ( fi(i) - fi(i-2) ) / ( xi(i) - xi(i-2) );
     end
     for i = 2: 2*n
         for j = (2*n+2) : -1 : i+1
-            fi(j) = ( fi(j) - fi(j-1) ) / ( x(j) - x(j-i) );
+            fi(j) = ( fi(j) - fi(j-1) ) / ( xi(j) - xi(j-i) );
         end
     end
 
