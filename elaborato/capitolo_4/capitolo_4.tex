@@ -38,6 +38,13 @@ Scrivere una function Matlab che implementi il calcolo del polinomio interpolant
 	\subsection {Esercizio 4.4}
 Utilizzare le functions degli esercizi precedenti per disegnare l'approssimazione della funzione $sin(x)$  nell'intervallo $[0, 2\pi]$, utilizzando le ascisse di interpolazione $x_{i}=i\pi, i=0,1,2$.
 
+\lstinputlisting{./capitolo_4/sin_interpolation.m}
+\begin{figure}
+    \centering
+    \includegraphics{./capitolo_4/sin_interpolation}
+    \caption{Interpolazione usando forma di Lagrange e di Newton}
+\end{figure} 
+
 	\subsection {Esercizio 4.5}
 Scrivere una function Matlab che implementi la \texttt { spline } cubica interpolante (naturale o \textit{not-a-knot}, come specificato in ingresso) delle coppie di dati assegnate. La forma della function deve essere del tipo: \texttt { y = spline3( xi, fi, x, tipo ) }.
 
