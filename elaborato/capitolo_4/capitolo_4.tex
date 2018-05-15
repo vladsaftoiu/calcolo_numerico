@@ -38,8 +38,11 @@ Scrivere una function Matlab che implementi il calcolo del polinomio interpolant
 	\subsection {Esercizio 4.4}
 Utilizzare le functions degli esercizi precedenti per disegnare l'approssimazione della funzione $sin(x)$  nell'intervallo $[0, 2\pi]$, utilizzando le ascisse di interpolazione $x_{i}=i\pi, i=0,1,2$.
 
+Il codice seguente richiama le funzioni definite in precedenza e disegna un grafico con il confronto fra le funzioni $sin(x)$ e i corrispondenti polinomi interpolanti in forma di Newton e di Lagrange.
 \lstinputlisting{./capitolo_4/sin_interpolation.m}
-\begin{figure}
+Il risultato è stato riportato in figura \ref{sin_interpolation}. \textbf{ verificare perché bisogna usare ascisse $0\pi, 1\pi, 2\pi$ }.
+
+\begin{figure}\label{sin_interpolation}
     \centering
     \includegraphics{./capitolo_4/sin_interpolation}
     \caption{Interpolazione usando forma di Lagrange e di Newton}
