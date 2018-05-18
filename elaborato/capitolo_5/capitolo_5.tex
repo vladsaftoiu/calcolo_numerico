@@ -1,0 +1,12 @@
+\section{Capitolo 5}
+
+	\subsection{Esercizio 5.1}
+Scrivere una function Matlab che implementi la formula composita dei trapezi su $n+1$ ascisse equidistanti nell'intervallo $[a, b]$, relativamente alla funzione implementata da \texttt{fun(x)}. 
+La function deve essere del tipo: \texttt{ [If] = trapcomp( n, a, b, fun ) }.
+La formula composita dei trapezi è così definita:
+\begin{equation}\label{trapezi_composite_equation}
+	I_1^{(n)} = \frac{b-a}{2n} (f_0 + 2\sum_{i=1}^{n-1}f_i + f_n)
+\end{equation}
+La function Matlab che implementa la \ref{trapezi_composite_equation} è:
+\lstinputlisting{./capitolo_5/trapcomp.m}
+
