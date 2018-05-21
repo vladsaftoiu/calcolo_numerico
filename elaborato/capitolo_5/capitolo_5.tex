@@ -10,3 +10,13 @@ La formula composita dei trapezi è così definita:
 La function Matlab che implementa la \ref{trapezi_composite_equation} è:
 \lstinputlisting{./capitolo_5/trapcomp.m}
 
+	\subsection{Esercizio 5.2}
+Scrivere una function Matlab che implementi la formula composita di Simpson sulle $2n+1$ ascisse equidistanti nell'intervallo $[a, b]$, relativamente alla funzione implementata da \texttt{fun(x)}. 
+La function deve essere del tipo: \texttt{ [If] = simpcomp( n, a, b, fun ) }.
+La formula composita di Simpson è così definita:
+\begin{equation}\label{simpson_composite_equation}
+	I_2^{(n)} = \frac{b-a}{3n} (4\sum_{i=1}^{\frac{n}{2}}f_{2i-1} +2\sum_{i=0}^{\frac{n}{2}}f_{2i} - f_0 - f_n)
+\end{equation}
+La function Matlab che implementa la \ref{simpson_composite_equation} è:
+\lstinputlisting{./capitolo_5/simpcomp.m}
+
