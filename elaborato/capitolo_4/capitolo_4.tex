@@ -33,7 +33,16 @@ La function matlab che implementa \ref{newton_equation} è:
 \lstinputlisting{./capitolo_4/newton.m}
 
 	\subsection {Esercizio 4.3}
-Scrivere una function Matlab che implementi il calcolo del polinomio interpolante di Hermite. La forma della function deve essere del tipo \texttt{ y = newton( xi, fi, f1i, x ) }
+Scrivere una function Matlab che implementi il calcolo del polinomio interpolante di Hermite. La forma della function deve essere del tipo \texttt{ y = hermite( xi, fi, f1i, x ) }
+
+Il polinomio interpolante di Hermite richiede un numero pari di ascisse distribuite come segue: 
+\begin{equation}
+	a <= x_0 < x_{\frac{1}{2}} < x_{1+\frac{1}{2}} < ... < x_n < x_{n+\frac{1}{2}} <= b
+\end{equation}
+con $\lim{x_{i+\frac{1}{2}} = x_i}$ si ha che $x_0 = x_1$, $x_2=x_3$, etc. Pertanto $f[x_i, x_1]:=f[x_i, x_i]:=f^{(1)}(x_i)$ e l'algoritmo delle differenze divise verrà modificato in modo che al primo passo quando bisogna calcolare $f[x_i, x_i]$ si utilizza il valore della derivata prima che verrà passato come parametro alla funzione.
+
+La function Matlab che implementa il polinomio interpolante di Hermite è:
+\lstinputlisting{./capitolo_4/hermite.m}
 
 	\subsection {Esercizio 4.4}
 Utilizzare le functions degli esercizi precedenti per disegnare l'approssimazione della funzione $sin(x)$  nell'intervallo $[0, 2\pi]$, utilizzando le ascisse di interpolazione $x_{i}=i\pi, i=0,1,2$.
@@ -50,6 +59,38 @@ Il risultato è stato riportato in figura \ref{sin_interpolation}. \textbf{ veri
 
 	\subsection {Esercizio 4.5}
 Scrivere una function Matlab che implementi la \texttt { spline } cubica interpolante (naturale o \textit{not-a-knot}, come specificato in ingresso) delle coppie di dati assegnate. La forma della function deve essere del tipo: \texttt { y = spline3( xi, fi, x, tipo ) }.
+
+Formula per il calcolo della spline cubica:
+\begin{equation}
+	s_3(x) = \frac{(x - x_{i-1})^2m_i + (x_i-x)^2m_{i-1}}{6h_i} + q_i, \;\; x \in [x_{i-1}, x_i]
+\end{equation}
+
+Condizioni per il calcolo della spline naturale:
+\[
+	\begin{pmatrix}
+		2 		& \epsilon_1 	& 			& 		& 	\\
+		\phi_2 	& 2			& \epsilon_2	& 		& 	\\
+				& ...			& ...			& ... 	& 	\\
+				& 			& ...			& ... 	& \epsilon_{n-2}	\\
+				& 			& 			& \phi_{n-1} 	& 2	\\
+	\end{pmatrix}
+	\begin{pmatrix}
+		m_1 \\
+		m_2 \\
+		... \\
+		... \\
+		m_{n-1}
+	\end{pmatrix}
+	= 6
+	\begin{pmatrix}
+		f[x_0, x_1, x_2] \\
+		m_2 \\
+		... \\
+		... \\
+		m_{n-1}
+	\end{pmatrix}
+\]
+Condizioni per il calcolo della spline cubica:
 
 	\subsection {Esercizio 4.6}
 Scrivere una function Matlab che implementi il calcolo delle ascisse di Chebyshev per il polinomio interpolante di grado $n$, su un generico intervallo $[a,b]$. La function deve essere del tipo: \texttt { xi = ceby( n, a, b ) }.
