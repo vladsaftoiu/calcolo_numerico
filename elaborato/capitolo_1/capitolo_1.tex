@@ -1,17 +1,63 @@
 \section{Capitolo 1}
 
-
 	\subsection{Esercizio 1.1}
+
 Sia $x = e \approx 2.7183 = \tilde{x}$. Si calcoli il corrispondente errore relativo $\varepsilon_x$ e il numero di cifre significative $k$ con cui $\tilde{x}$ approssima $x$. Si verifichi che:
 
 \begin{equation}
 	\abs{\varepsilon_x} \approx \frac{1}{2}10^{-k}
 \end{equation}
 
-L'errore relativo è la quantità: $\varepsilon_x \equiv \frac{\Delta{x}}{x}=\frac{\tilde{x}-x}{x} = \frac{2.7183-e}{e} = 6.68494 \times 10^{-6}$
-
-Il numero di cifre significative $k$ è all'incirca $-\log_{10}{\abs{\varepsilon_x}}$ ovvero: $-\log_{10}{6.68494 \times 10^{-6}}=5.174 \approx 5$ infatti le prime 5 cifre decimali dell'approssimazione $\tilde{x}$ sono corrette: $\tilde{x}  =\underline{2.7183}$ e $x = \underline{2.71828}182845...$; inoltre si verifica che: $\abs{\varepsilon_x} = \abs{6.685 \times 10^{-6}} = 0.6685 \times 10^{-5} \approx \frac{1}{2}10^{-5}$
-
+L'errore relativo è la quantità: $\varepsilon_x \equiv \frac{\Delta{x}}{x}=\frac{\tilde{x}-x}{x} = \frac{2.7183-e}{e} = 6.68494 \times 10^{-6}$.\\
+Il numero di cifre significative $k$ è all'incirca $-\log_{10}{\abs{\varepsilon_x}}$ ovvero: $-\log_{10}{6.68494 \times 10^{-6}}=5.174 \approx 5$.\\
+Infatti le prime 5 cifre decimali dell'approssimazione $\tilde{x}$ sono corrette: $\tilde{x}  =\underline{2.7183}$ e $x = \underline{2.71828}182845...$.\\
+Inoltre si verifica che: $\abs{\varepsilon_x} = \abs{6.685 \times 10^{-6}} = 0.6685 \times 10^{-5} \approx \frac{1}{2}10^{-5}$
 
 	\subsection{Esercizio 1.2}
 
+Utilizzare l'algoritmo 3.6 del libro per stabilire se le seguenti matrici sono $sdp$ o no:
+	\[	
+		A_1 = 
+		\begin{pmatrix}
+			1&-1&2&2 \\
+			-1&5&-14&2\\
+			2&-14&42&2\\
+			2&2&2&65\\
+		\end{pmatrix}
+	\]
+	\[		
+		A_2 =
+		\begin{pmatrix}
+			1&-1&2&2\\
+			-1&6&-17&3\\
+			2&-17&48&-16\\
+			2&3&-16&4\\
+		\end{pmatrix}
+	\]
+
+Usando lo script: \\
+\lstinputlisting{./capitolo_1/sdp_test.m}
+che si appoggia all'algoritmo 3.6:\\
+\lstinputlisting{./capitolo_3/LDL.m}
+I risultati sono i seguenti:\\
+\begin{lstlisting}[frame=single]
+sdp_test
+
+A =
+
+     1    -1     2     2
+    -1     5   -14     2
+     2   -14    42     2
+     2     2     2    65
+
+la matrice e' SDP
+
+A =
+
+     1    -1     2     2
+    -1     6   -17     3
+     2   -17    48   -16
+     2     3   -16     4
+
+la matrice NON e' SDP
+\end{lstlisting}
