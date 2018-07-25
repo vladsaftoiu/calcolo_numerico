@@ -1,0 +1,86 @@
+\section{Capitolo 1}
+
+
+	\subsection{Esercizio 1.1}
+
+Sia $x = e \approx 2.7183 = \tilde{x}$. Si calcoli il corrispondente errore relativo $\varepsilon_x$ e il numero di cifre significative $k$ con cui $\tilde{x}$ approssima $x$. Si verifichi che:
+
+\begin{equation}
+	\abs{\varepsilon_x} \approx \frac{1}{2}10^{-k}
+\end{equation}
+
+L'errore relativo è la quantità: $\varepsilon_x \equiv \frac{\Delta{x}}{x}=\frac{\tilde{x}-x}{x} = \frac{2.7183-e}{e} = 6.68494 \times 10^{-6}$.\\
+Il numero di cifre significative $k$ è all'incirca $-\log_{10}{\abs{\varepsilon_x}}$ ovvero: $-\log_{10}{6.68494 \times 10^{-6}}=5.174 \approx 5$.\\
+Infatti le prime 5 cifre decimali dell'approssimazione $\tilde{x}$ sono corrette: $\tilde{x}  =\underline{2.7183}$ e $x = \underline{2.71828}182845...$.\\
+Inoltre si verifica che: $\abs{\varepsilon_x} = \abs{6.685 \times 10^{-6}} = 0.6685 \times 10^{-5} \approx \frac{1}{2}10^{-5}$
+
+
+	\subsection{Esercizio 1.2}
+
+Utilizzare l'algoritmo 3.6 del libro per stabilire se le seguenti matrici sono $sdp$ o no:
+	\[	
+		A_1 = 
+		\begin{pmatrix}
+			1&-1&2&2 \\
+			-1&5&-14&2\\
+			2&-14&42&2\\
+			2&2&2&65\\
+		\end{pmatrix}
+	\]
+	\[		
+		A_2 =
+		\begin{pmatrix}
+			1&-1&2&2\\
+			-1&6&-17&3\\
+			2&-17&48&-16\\
+			2&3&-16&4\\
+		\end{pmatrix}
+	\]
+
+Usando lo script: \\
+\lstinputlisting{./capitolo_1/sdp_test.m}
+che si appoggia all'algoritmo 3.6:\\
+\lstinputlisting{./capitolo_3/LDL.m}
+I risultati sono i seguenti:\\
+\begin{lstlisting}[frame=single]
+sdp_test
+
+A =
+
+     1    -1     2     2
+    -1     5   -14     2
+     2   -14    42     2
+     2     2     2    65
+
+la matrice e' SDP
+
+A =
+
+     1    -1     2     2
+    -1     6   -17     3
+     2   -17    48   -16
+     2     3   -16     4
+
+la matrice NON e' SDP
+\end{lstlisting}
+
+
+	\subsection{Esercizio 1.3}
+
+Scrivere una function Matlab che, avendo in ingresso un vettore $b$ contenente i termini noti del sistema lineare $Ax = b$ con $A$ sdp e l’output dell’Algoritmo 3.6 del libro (matrice $A$ riscritta nella porzione triangolare inferiore con i fattori $L$ e $D$ della fattorizzazione $LDL^{T}$ di $A$), ne calcoli efficientemente la soluzione.
+
+\TODO
+	
+
+	\subsection{Esercizio 1.4}
+
+Scrivere una function Matlab che, avendo in ingresso un vettore $b$ contenente i termini noti del sistema lineare $Ax = b$ e l’output dell’Algoritmo 3.7 del libro (matrice $A$ riscritta con la fattorizzazione $LU$ con pivoting parziale e il vettore $p$ delle permutazioni), ne calcoli efficientemente la soluzione.
+
+\TODO
+
+
+	\subsection{Esercizio 1.5}
+
+ Inserire alcuni esempi di utilizzo delle due function implementate per i punti 3 e 4, scegliendo per ciascuno di essi un vettore $\tilde{x}$ e ponendo $b = A\tilde{x}$. Riportare $\tilde{x}$ e la soluzione $x$ da essi prodotta. Costruire anche una tabella in cui, per ogni esempio considerato, si riportano il numero di condizionamento di $A$ in norma 2 (usare $cond$ di Matlab) e le quantità $\frac{\norm{r}}{\norm{b}}$ e $\frac{\norm{x-\tilde{x}}}{\norm{\tilde{x}}}$.
+
+\TODO
