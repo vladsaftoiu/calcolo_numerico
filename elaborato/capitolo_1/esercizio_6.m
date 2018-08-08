@@ -1,8 +1,5 @@
-seq_1 = first_sequence( 3 );
-%plot(1:length(seq_1)-1, seq_1(1:length(seq_1)-1, 1), 'b');
-%hold
-seq_2 = second_sequence( 3, 2 );
-%plot(1:length(seq_2)-1, seq_2(1:length(seq_2)-1, 1), 'r');
+seq_1 = first_sequence( 3 )
+seq_2 = second_sequence( 3, 2 )
 
 function [x] = first_sequence( x0 )
     format long e;
@@ -17,7 +14,6 @@ function [x] = first_sequence( x0 )
         x(i, 2) = abs_err;
         i = i+1;
     end
-    x
 end 
 
 function [x] = second_sequence( x0, x1 )
@@ -34,5 +30,4 @@ function [x] = second_sequence( x0, x1 )
         x(i, 2) = abs_err;
         i = i+1;
     end
-    x
 end

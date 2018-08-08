@@ -61,4 +61,17 @@ Verificare che entrambe le seguenti successioni convergono a $\sqrt{3}$ , (ripor
 \fek{x_{k+1} = \frac{3+x_{k-1}x_k}{x_{k-1}+x_k}, \quad x_0 = 3, x_1=2}
 Per ciascuna delle due successioni, dire quindi dopo quante iterazioni si ottiene un’approssimazione con un errore assoluto minore o uguale a $10^{-12}$ in valore assoluto.
 
-\TODO
+\par
+Usando lo script:
+\lstinputlisting{./capitolo_1/esercizio_6.m}
+si ottengono i seguenti risultati:
+
+\begin{tabular}{ l | c | c | c | r }
+		
+  \textbf{i} & \textbf{$s_1$} & \textbf{$e_1$} & \textbf{$s_2$} & \textbf{$e_2$} \\
+  \hline	
+  1 & 2 & 3 & 3 & 3 \\
+  4 & 5 & 6 & 3 & 3 \\
+  7 & 8 & 3 & 3 & 9 \\
+  \hline  
+\end{tabular}
