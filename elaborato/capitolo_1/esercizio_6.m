@@ -3,7 +3,7 @@ seq_2 = second_sequence( 3, 2 )
 
 function [x] = first_sequence( x0 )
     format long e;
-    tol = 1e-15;
+    tol = 1e-12;
     x(1,1) = x0;    
     i = 2; % start from x1
     abs_err = x(1,1) - sqrt(3); 
@@ -18,7 +18,7 @@ end
 
 function [x] = second_sequence( x0, x1 )
     format long e;
-    tol = 1e-15;
+    tol = 1e-12;
     x(1,1) = x0;
     x(2,1) = x1;
     i = 3; % start from x2
