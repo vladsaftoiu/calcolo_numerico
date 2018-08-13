@@ -1,9 +1,80 @@
-\section{Capitolo 1}
+\section{Capitolo 2}
 
 
-	\subsection{Esercizio 1.1}
+	\subsection{Esercizio 2.1}
 
-Sia $x = e \approx 2.7183 = \tilde{x}$. Si calcoli il corrispondente errore relativo $\varepsilon_x$ e il numero di cifre significative $k$ con cui $\tilde{x}$ approssima $x$. Si verifichi che:
+Determinare analiticamente gli zeri del polinomio 
+\begin{equation*}
+	P(x) = x^3 - 4x^2 + 5x - 2
+\end{equation*}
+ e la loro molteplicità. Dire perché il metodo di bisezione è utilizzabile per approssimarne uno a partire dall’intervallo di confidenza $[a,b]=[0,3]$. A quale zero di P potrà tendere la successione generata dal metodo di bisezione a partire da tale intervallo? Costruire una tabella in cui si riportano il numero di iterazioni e di valutazioni di P richieste per valori decrescenti della tolleranza $tolx$.
+
+Dato che $P(x) = x^3 - 4x^2 + 5x - 2 = (x-2)(x-1)^2$ le radici di $P(x)$ sono $x_1=1$ e $x_2=2$. Rispetto all'intervallo $[a,b]=[0,3]$ si ha che $P(0) = -2$ e $P(3)=4$ ovvero il segno è discorde pertando, data la continuità della funzione, $P(x)$ assumerà sicuramente il valore $0$ in tale intervallo; è quindi possibile usare il metodo di bisezione partendo con $[a,b] = [0,3].$
+Il metodo di bisezione ha il pregio di poter calcolare il numero massimo di iterazioni a priori; dati $a,b$ estremi dell'intervallo e $tolx$ valore della tolleranza richiesta, la formula corrispondente è la seguente:
+\begin{equation*}
+	imax= \ceil{\log_2{(b-a)}-\log_2{(tolx)}}
+\end{equation*}
+Considerato che il primo punto intermedio è $x=3/2$ si ha $P(3/2)P(3)<0$; il metodo convergerà quindi verso la radice situata nella seconda metà dell'intervallo, ovvero $x_2=2$.
+
+Usando il seguente algoritmo per il metodo di bisezione:
+\lstinputlisting{./capitolo_2/bisection.m}
+si osserva che le valutazioni le valutazioni di funzione sono sempre $2+i$, ovvero le due iniziali più una ad ogni iterazione. La tabella sarà quindi:
+
+\begin{tabular}{ c | c | c }
+$tolx$ & imax & feval \\
+\hline
+$10^{-1}$ & 5 & 7 \\
+$10^{-2}$ & 9 & 11 \\
+$10^{-3}$ & 12 & 14 \\
+$10^{-4}$ & 15 & 17 \\
+$10^{-5}$ & 19 & 21 \\
+$10^{-6}$ & 22 & 24 \\
+$10^{-8}$ & 29 & 31 \\
+$10^{-9}$ & 32 & 34 \\
+$10^{-10}$ & 35 & 37 \\
+$10^{-15}$ & 52 & 54 \\
+$10^{-20}$ & 69 & 71 \\
+$10^{-25}$ & 85 & 87 \\
+$10^{-30}$ & 102 & 104 \\
+$10^{-40}$ & 135 & 137 \\
+$10^{-50}$ & 168 & 170 \\
+$10^{-60}$ & 201 & 203 \\
+$10^{-70}$ & 235 & 237 \\
+$10^{-80}$ & 268 & 270 
+
+\end{tabular}
+
+
+	\subsection{Esercizio 2.2}
+	
+Completare la tabella precedente riportando anche il numero di iterazioni e di valutazioni di $P$ richieste dal metodo di Newton, dal metodo delle corde e dal metodo delle secanti (con secondo termine della successione ottenuto con Newton) a partire dal punto $x_0=3$. Commentare i risultati riportati in tabella; è possibile utilizzare $x_0 = \frac{5}{3}$ come punto di innesco?
+
+\TODO
+
+
+
+	\subsection{Esercizio 2.3}
+
+Costruire una seconda tabella analoga alla precedente relativa ai metodi di Newton, di Newton modificato e di accelerazione di Aitken applicati alla funzione polinomiale P a partire dal punto di innesco $x_0 = 0$. Commentare i risultati riportati in tabella.
+
+\TODO
+
+
+
+	\subsection{Esercizio 2.4}
+
+Definire una procedura iterativa basata sul metodo di Newton per approssimare $\sqrt{\alpha}$ per un assegnato $\alpha > 0$. Costruire una tabella dove
+si riportano le successive approssimazioni ottenute e i corrispondenti errori assoluti (usare l’approssimazione Matlab di $\sqrt{\alpha}$ per il calcolo dell'errore) nel caso in cui $\alpha = 5$ partendo da $x_0 = 5$.
+
+\TODO
+
+
+
+	\subsection{Esercizio 2.4}
+
+Definire una procedura iterativa basata sul metodo delle secanti sempre per approssimare $\sqrt{\alpha}$ per un assegnato $\alpha > 0$. Completare la tabella
+precedente aggiungendovi i risultati ottenuti con tale procedura partendo da $x_0 = 5$ e $x_1=3$. Commentare i risultati riportati in tabella.
+
 
 \fek{\abs{\varepsilon_x} \approx \frac{1}{2}10^{-k}}
 

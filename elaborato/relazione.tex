@@ -2,6 +2,7 @@
 
 \usepackage{bbm}
 \usepackage{amsmath}
+\usepackage{mathtools}
 \usepackage{empheq}
 \usepackage[italian]{babel}
 \usepackage[utf8]{inputenc}
@@ -21,6 +22,8 @@
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 
 \lstset{frame=tb,
   language=Matlab,
@@ -63,7 +66,8 @@
 	\newpage
 	
 	\include{./capitolo_1/capitolo_1}
-	\include{./capitolo_1/capitolo_3}
+    \include{./capitolo_2/capitolo_2}
+	\include{./capitolo_3/capitolo_3}
 	\include{./capitolo_4/capitolo_4}
 	\include{./capitolo_5/capitolo_5}
 \end{document}
