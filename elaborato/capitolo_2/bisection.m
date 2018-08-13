@@ -1,4 +1,4 @@
-function [x] = newton( a, b, f, tolx )
+function [x] = bisection( a, b, f, tolx )
 
     fa = feval( f, a );
     fb = feval( f, b );

@@ -9,7 +9,7 @@ Determinare analiticamente gli zeri del polinomio
 \end{equation*}
  e la loro molteplicità. Dire perché il metodo di bisezione è utilizzabile per approssimarne uno a partire dall’intervallo di confidenza $[a,b]=[0,3]$. A quale zero di P potrà tendere la successione generata dal metodo di bisezione a partire da tale intervallo? Costruire una tabella in cui si riportano il numero di iterazioni e di valutazioni di P richieste per valori decrescenti della tolleranza $tolx$.
 
-Dato che $P(x) = x^3 - 4x^2 + 5x - 2 = (x-2)(x-1)^2$ le radici di $P(x)$ sono $x_1=1$ e $x_2=2$. Rispetto all'intervallo $[a,b]=[0,3]$ si ha che $P(0) = -2$ e $P(3)=4$ ovvero il segno è discorde pertando, data la continuità della funzione, $P(x)$ assumerà sicuramente il valore $0$ in tale intervallo; è quindi possibile usare il metodo di bisezione partendo con $[a,b] = [0,3].$
+Dato che $P(x) = x^3 - 4x^2 + 5x - 2 = (x-2)(x-1)^2$ le radici di $P(x)$ sono $x_1=1$ e $x_2=2$. Le molteplicità sono rispettivamente $m_1=2$ e $m_2=1$ (infatti $P'(x_1) = 0$). Rispetto all'intervallo $[a,b]=[0,3]$ si ha che $P(0) = -2$ e $P(3)=4$ ovvero il segno è discorde pertando, data la continuità della funzione, $P(x)$ assumerà sicuramente il valore $0$ in tale intervallo; è quindi possibile usare il metodo di bisezione partendo con $[a,b] = [0,3].$
 Il metodo di bisezione ha il pregio di poter calcolare il numero massimo di iterazioni a priori; dati $a,b$ estremi dell'intervallo e $tolx$ valore della tolleranza richiesta, la formula corrispondente è la seguente:
 \begin{equation*}
 	imax= \ceil{\log_2{(b-a)}-\log_2{(tolx)}}
@@ -21,6 +21,7 @@ Usando il seguente algoritmo per il metodo di bisezione:
 si osserva che le valutazioni le valutazioni di funzione sono sempre $2+i$, ovvero le due iniziali più una ad ogni iterazione. La tabella sarà quindi:
 
 \begin{tabular}{ c | c | c }
+
 $tolx$ & imax & feval \\
 \hline
 $10^{-1}$ & 5 & 7 \\
@@ -32,15 +33,6 @@ $10^{-6}$ & 22 & 24 \\
 $10^{-8}$ & 29 & 31 \\
 $10^{-9}$ & 32 & 34 \\
 $10^{-10}$ & 35 & 37 \\
-$10^{-15}$ & 52 & 54 \\
-$10^{-20}$ & 69 & 71 \\
-$10^{-25}$ & 85 & 87 \\
-$10^{-30}$ & 102 & 104 \\
-$10^{-40}$ & 135 & 137 \\
-$10^{-50}$ & 168 & 170 \\
-$10^{-60}$ & 201 & 203 \\
-$10^{-70}$ & 235 & 237 \\
-$10^{-80}$ & 268 & 270 
 
 \end{tabular}
 
@@ -49,9 +41,33 @@ $10^{-80}$ & 268 & 270
 	
 Completare la tabella precedente riportando anche il numero di iterazioni e di valutazioni di $P$ richieste dal metodo di Newton, dal metodo delle corde e dal metodo delle secanti (con secondo termine della successione ottenuto con Newton) a partire dal punto $x_0=3$. Commentare i risultati riportati in tabella; è possibile utilizzare $x_0 = \frac{5}{3}$ come punto di innesco?
 
-\TODO
+Non è possibile utilizzare il punto di innesco $x_0 = 5/3$ in quanto si ha che $P'(x_0) = 0$ e questo renderebbe non definita la frazione $\frac{f(x)}{f'(x)}$ utilizzata in tutti i metodi iterativi dell'esercizio.
 
+Utilizzando le seguenti funzioni Matlab che implementano i metodi di Newton, corde e secanti:
+\lstinputlisting{./capitolo_2/newton.m}
+\lstinputlisting{./capitolo_2/secanti.m}
+si ottengono i risultati  (concatenati alla tabella relativa al metodo di bisezione dell Esercizio 2.1):
+\begin{tabular}{ c | c | c | c | c | c | c | c | c }
 
+\multirow{2}{*}{$tolx$} & \multicolumn{2}{c}{bisection} & \multicolumn{2}{c}{newton} & \multicolumn{2}{c}{secanti} & \multicolumn{2}{c}{corde} \\
+\cline{2-9}
+ & imax & feval & it & feval & it & feval & it & feval\\
+\hline
+$10^{-1}$ & 5 & 7 		& 4 & 8   & 3 &  5 & 3   & 4  \\
+$10^{-2}$ & 9 & 11 	&   5 & 10  & 5 &  7 & 12  & 13 \\
+$10^{-3}$ & 12 & 14 	& 6 & 12  & 6 &  8 & 27  & 28 \\
+$10^{-4}$ & 15 & 17 	& 6 & 12  & 7 &  9 & 44  & 45 \\
+$10^{-5}$ & 19 & 21 	& 7 & 14  & 8 & 10 & 62  & 63 \\
+$10^{-6}$ & 22 & 24 	& 7 & 14  & 8 & 10 & 79  & 80 \\
+$10^{-7}$ & 25 & 27   &  7 & 14  & 8 & 10 & 96  & 97 \\
+$10^{-8}$ & 29 & 31 	& 7 & 14  & 9 & 11 & 113 & 114\\
+$10^{-9}$ & 32 & 34 	& 8 & 16  & 9 & 11 & 131 & 132\\
+$10^{-10}$ & 35 & 37	& 8 & 16  & 9 & 11 & 148 & 149\\
+\end{tabular}
+
+Dalla tabella si evince che la convergenza del metodo delle corde e di bisezione è molto più lenta rispetto alla convergenza che si ha per i metodi di Newton e delle secanti.
+Per radici semplici infatti il metodo di Newton ha convergenza quadratica ($p=2$) mentre quello delle secanti all'incirca $p\approx1.6$. 
+Inoltre si evidenzia il costo di due valutazioni di funzione per ogni iterazione del metodo di Newton, che ne aumenta il costo in caso di radici con molteplicità $m > 1$ dato che allo stesso tempo la convergenza diventa lineare.
 
 	\subsection{Esercizio 2.3}
 
@@ -70,121 +86,9 @@ si riportano le successive approssimazioni ottenute e i corrispondenti errori as
 
 
 
-	\subsection{Esercizio 2.4}
+	\subsection{Esercizio 2.5}
 
 Definire una procedura iterativa basata sul metodo delle secanti sempre per approssimare $\sqrt{\alpha}$ per un assegnato $\alpha > 0$. Completare la tabella
 precedente aggiungendovi i risultati ottenuti con tale procedura partendo da $x_0 = 5$ e $x_1=3$. Commentare i risultati riportati in tabella.
 
-
-\fek{\abs{\varepsilon_x} \approx \frac{1}{2}10^{-k}}
-
-L'errore relativo è la quantità: $\varepsilon_x \equiv \frac{\Delta{x}}{x}=\frac{\tilde{x}-x}{x} = \frac{2.7183-e}{e} = 6.68494 \times 10^{-6}$.\\
-Il numero di cifre significative $k$ è all'incirca $-\log_{10}{\abs{\varepsilon_x}}$ ovvero: 
-\fek{-\log_{10}{6.68494 \times 10^{-6}}=5.174 \approx 5}.\\
-Infatti le prime 5 cifre decimali dell'approssimazione $\tilde{x}$ sono corrette: $\tilde{x}  =\underline{2.7183}$ e $x = \underline{2.71828}182845...$.\\
-Inoltre si verifica che: $\abs{\varepsilon_x} = \abs{6.685 \times 10^{-6}} = 0.6685 \times 10^{-5} \approx \frac{1}{2}10^{-5}$
-
-
-	\subsection{Esercizio 1.2}
 	
-	Usando gli sviluppi di Taylor fino al secondo ordine con resto in forma di Lagrange, si verifiche che se $f \in C^3$, risulta:
-	
-\fek{f^{(1)}(x) = \phi_h(x) + O(h^2)}
-
-	dove
-
-\fek{\phi_h(x) = \frac{f(x+h)-f(x-h)}{2h}}
-
-\TODO
-
-
-	\subsection{Esercizio 1.3}
-	
-Utilizzando Matlab, si costruisca una tabella dove, per $h = 10^{-j}$, $j =1, . . . , 10$ e per la funzione $f(x) = x^{4}$ si riporta il valore di $\phi_h(x)$ definito nell'Esercizio 1 in $x = 1$. Commentare i risultati ottenuti.
-
-Utilizzando lo script:
-\lstinputlisting{./capitolo_1/esercizio_3.m}
-si ottengono i seguenti risultati:
-\begin{tabular}{ c | c }
-i & $\phi_h(1)$ \\
-\hline
-1  & 4.040000000000002e+00 \\
-2  & 4.000400000000004e+00 \\
-3  & 4.000003999999723e+00 \\
-4  & 4.000000039999230e+00 \\
-5  & 4.000000000403681e+00 \\
-6  & 3.999999999948489e+00 \\
-7  & 4.000000000115023e+00 \\
-8  & 4.000000003445692e+00 \\
-9  & 4.000000108916879e+00 \\
-10 & 4.000000330961484e+00 \\
-\end{tabular}
-
-	\subsection{Esercizio 1.4}
-	
-Si dia una maggiorazione del valore assoluto dell’errore relativo con cui $x + y + z$ viene approssimato dall’approssimazione prodotta dal calcolatore, ossia $(x \oplus y) \oplus z$ (supporre che non ci siano problemi di overflow o di underflow). Ricavare l’analoga maggiorazione anche per $x \oplus (y \oplus z)$ tenendo presente che $x \oplus (y \oplus z) = (y \oplus z) \oplus x$.
-
-Tenendo presente la funzione $fl: \mathrm{I} \rightarrow \mathrm{M}$ definita come: $fl(x) \equiv \tilde{x} = x(1+\varepsilon_x)$ e considerando che in aritmentica esatta $(x+y)+z = x+y+z$, l'errore relativo è misurato come $\frac{\tilde{x}-x}{x} = \frac{(x \oplus y) \oplus z - x - y - z}{x+y+z}$ e quindi si ha:
-\begin{equation*}
-	\begin{split}
-		(x \oplus y) \oplus z \\
-			& = fl \lbrack \; fl(fl(x) + fl(y)) + fl(z) \;\rbrack \\
-			& = fl \lbrack \; fl(x(1+\varepsilon_x) + y(1+\varepsilon_y)) + z(1+\varepsilon_z) \; \rbrack \\
-			& = fl \{ \; \lbrack \; x(1+\varepsilon_x) + y(1+\varepsilon_y) \; \rbrack (1 + \varepsilon_{\alpha}) + z(1+\varepsilon_z) \; \} \\
-	  		& = \{ \; \lbrack \; x(1+\varepsilon_x) + y(1+\varepsilon_y) \; \rbrack (1 + \varepsilon_{\alpha}) + z(1+\varepsilon_z) \; \} (1 + \varepsilon_{\beta}) \\
-	\end{split}
-\end{equation*}
-
-\begin{equation*}
-	\begin{split}
-		\frac{(x \oplus y) \oplus z - x - y - z}{x+y+z} \\
-			& \leq \frac{x(1+u)^3 + y(1+u)^2 + z(1+u^2) -x -y -z}{x+y+z} \\
-	 		& = \frac{x(3u+3u^2+u^3) + y(3u+3u^2+u^3) + z(2u+u^2)}{x+y+z} \\
-	 		& \leq \frac{x(3u+3u^2+u^3) + y(3u+3u^2+u^3) + z(2u+u^2)}{x+y+z} \\
-	 		& \leq \frac{7ux+7uy+3uz}{x+y+z} \\
-	 		& = u(3+4 \frac{x+y}{x+y+z})
-	\end{split}
-\end{equation*}
-
-
-	\subsection{Esercizio 1.5}
-Eseguire le seguenti istruzioni in Matlab:
-\begin{lstlisting}[frame=single]
-	x = 0; count = 0;	
-	while x \tilde= 1, x = x + delta, count = count + 1, end
-\end{lstlisting}
-dapprima ponendo $delta = 1/16$ e poi ponendo $delta = 1/20$. Commentare i risultati ottenuti e in particolare il non funzionamento nel secondo caso.
-\par
-Il numero $1/16 = 0.0625$ in binario è: $0.0001$\\
-Invece il numero $1/20 = 0.05$ in binario risulta periodico: $0.00\underline{0011}$, questo significa che, memorizzandolo in un area di memoria finita, si ha necessariamente perdita di informazione; in particolare:\\
-IEEE 754 (base 2): $00111101010011001100110011001101$\\
-ovvero in base 10: $0.0500000007450580596923828125 > 0.05$\\
-pertanto $\phi_{20} = 1.0000000149 \neq 1$ e quindi il ciclo non concluderà mai.
-
-	\subsection{Esercizio 1.6}
-Verificare che entrambe le seguenti successioni convergono a $\sqrt{3}$ , (riportare le successive approssimazioni in una tabella a due colonne, una per ciascuna successione),
-\fek{x_{k+1} = \frac{x_k + \frac{3}{x_k}}{2}, \quad x_0 = 3}
-\fek{x_{k+1} = \frac{3+x_{k-1}x_k}{x_{k-1}+x_k}, \quad x_0 = 3, x_1=2}
-Per ciascuna delle due successioni, dire quindi dopo quante iterazioni si ottiene un’approssimazione con un errore assoluto minore o uguale a $10^{-12}$ in valore assoluto.
-
-\par
-Usando lo script:
-\lstinputlisting{./capitolo_1/esercizio_6.m}
-si ottengono i seguenti risultati:
-
-\begin{tabular}{ r | c | c | c | c }
-		
-  \textbf{i} & \textbf{$s_1$} & \textbf{$e_1$} & \textbf{$s_2$} & \textbf{$e_2$} \\
-  \hline	
-  	1 & 3.0000000 &                & 3.0000000 &               \\
-	2 & 2.0000000 & 2.6794919 e-01 & 2.0000000 &               \\
-	3 & 1.7500000 & 1.7949192 e-02 & 1.8000000 & 6.7949192 e-02\\
-	4 & 1.7321429 & 9.2049574 e-05 & 1.7368420 & 4.7912977 e-03\\
-	5 & 1.7320508 & 2.4458502 e-09 & 1.7321429 & 9.2049574 e-05\\
-	6 & 1.7320508 &                & 1.7320509 & 1.2713716 e-07\\
-	7 &           &                & 1.7320508 & 3.3786307 e-12\\
-	8 &           &                & 1.7320508 & 2.2204460 e-16\\
-  \hline  
-\end{tabular}
-
-Si verifica che entrambe le successioni convergono al valore $\sqrt{3}$, la prima successione converge più velocemente e l'errore assoluto sarà minore o uguale a $10^{-12}$ dopo la 5a iterazione, mentre per la seconda successione questo avviene dopo la 7a iterazione.
