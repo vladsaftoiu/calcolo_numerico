@@ -5,5 +5,5 @@ x0 = 0;
 
 
 for i=1 : 10
-	[x, evals] = newton( x0, f, f1, 10^-i, 1000, 2)
+	[x, evals] = aitken( x0, f, f1, 10^-i, 1000)
 end
