@@ -1,21 +1,14 @@
-\section{Capitolo 1}
+\section{Capitolo 3}
 
 
-	\subsection{Esercizio 1.1}
+	\subsection{Esercizio 3.1}
 
-Sia $x = e \approx 2.7183 = \tilde{x}$. Si calcoli il corrispondente errore relativo $\varepsilon_x$ e il numero di cifre significative $k$ con cui $\tilde{x}$ approssima $x$. Si verifichi che:
+Scrivere una function Matlab per la risoluzione di un sistema lineare con matrice dei coefficienti triangolare inferiore a diagonale unitaria. Inserire un esempio di utilizzo.
 
-\begin{equation}
-	\abs{\varepsilon_x} \approx \frac{1}{2}10^{-k}
-\end{equation}
-
-L'errore relativo è la quantità: $\varepsilon_x \equiv \frac{\Delta{x}}{x}=\frac{\tilde{x}-x}{x} = \frac{2.7183-e}{e} = 6.68494 \times 10^{-6}$.\\
-Il numero di cifre significative $k$ è all'incirca $-\log_{10}{\abs{\varepsilon_x}}$ ovvero: $-\log_{10}{6.68494 \times 10^{-6}}=5.174 \approx 5$.\\
-Infatti le prime 5 cifre decimali dell'approssimazione $\tilde{x}$ sono corrette: $\tilde{x}  =\underline{2.7183}$ e $x = \underline{2.71828}182845...$.\\
-Inoltre si verifica che: $\abs{\varepsilon_x} = \abs{6.685 \times 10^{-6}} = 0.6685 \times 10^{-5} \approx \frac{1}{2}10^{-5}$
+\TODO
 
 
-	\subsection{Esercizio 1.2}
+	\subsection{Esercizio 3.2}
 
 Utilizzare l'algoritmo 3.6 del libro per stabilire se le seguenti matrici sono $sdp$ o no:
 	\[	
@@ -65,22 +58,62 @@ la matrice NON e' SDP
 \end{lstlisting}
 
 
-	\subsection{Esercizio 1.3}
+	\subsection{Esercizio 3.3}
 
 Scrivere una function Matlab che, avendo in ingresso un vettore $b$ contenente i termini noti del sistema lineare $Ax = b$ con $A$ sdp e l’output dell’Algoritmo 3.6 del libro (matrice $A$ riscritta nella porzione triangolare inferiore con i fattori $L$ e $D$ della fattorizzazione $LDL^{T}$ di $A$), ne calcoli efficientemente la soluzione.
 
 \TODO
 	
 
-	\subsection{Esercizio 1.4}
+	\subsection{Esercizio 3.4}
 
 Scrivere una function Matlab che, avendo in ingresso un vettore $b$ contenente i termini noti del sistema lineare $Ax = b$ e l’output dell’Algoritmo 3.7 del libro (matrice $A$ riscritta con la fattorizzazione $LU$ con pivoting parziale e il vettore $p$ delle permutazioni), ne calcoli efficientemente la soluzione.
 
 \TODO
 
 
-	\subsection{Esercizio 1.5}
+	\subsection{Esercizio 3.5}
 
  Inserire alcuni esempi di utilizzo delle due function implementate per i punti 3 e 4, scegliendo per ciascuno di essi un vettore $\tilde{x}$ e ponendo $b = A\tilde{x}$. Riportare $\tilde{x}$ e la soluzione $x$ da essi prodotta. Costruire anche una tabella in cui, per ogni esempio considerato, si riportano il numero di condizionamento di $A$ in norma 2 (usare $cond$ di Matlab) e le quantità $\frac{\norm{r}}{\norm{b}}$ e $\frac{\norm{x-\tilde{x}}}{\norm{\tilde{x}}}$.
+
+\TODO
+
+
+	\subsection{Esercizio 3.6}
+
+Sia $A = $ con $\epsilon = 10^{-13}$. Definire $L$ triangolare inferiore a diagonale unitaria e $U$ triangolare superiore in modo che il prodotto $LU$ sia la fattorizzazione $LU$ di $A$ e, posto $b = Ae$, con $e = (1, 1)^T$, confrontare l'accuratezza della soluzione che si ottiene usando il comando $U\setminus(L\setminus b)$ (Gauss senza pivoting) e il comando $A\setminus b$ (Gauss con pivoting).
+
+\TODO
+
+
+	\subsection{Esercizio 3.7}
+Scrivere una function Matlab specifica per la risoluzione di un sistema lineare con matrice dei coefficienti $A \in \mathcal{R}^{n \times n}$ bidiagonale inferiore a diagonale unitaria di Toeplitz, specificabile con uno scalare $\alpha$. Sperimentarne e commentarne le prestazioni (considerare il numero di condizionamento della matrice) nel caso in cui $n = 12$ e $\alpha =100$ ponendo dapprima $b = (1, 101, \dots , 101)^T$ (soluzione esatta $\tilde{x} = (1, \dots , 1)^T$ ) e quindi $b = 0.1 * (1, 101, \dots , 101)^T$ (soluzione esatta $\tilde{x} = (0.1, \dots , 0.1)^T$).
+
+\TODO
+
+
+	\subsection{Esercizio 3.8}
+Scrivere una function che, dato un sistema lineare sovradeterminato $A\mathbf{x}=\mathbf{b}$ con $A \in \mathcal{R}^{m \times n}, m > n, rank(A) = n$ e $\mathbf{b} \in \mathcal{R}^m$, preso come input $\mathbf{b}$ e l'output dell'algoritmo 3.8 del libro (matrice $A$ riscritta con la parte significativa di $R$ e la parte significativa dei vettori di Householder normalizzati con prima componente unitaria), ne calcoli efficientemente la soluzione nel senso dei minimi quadrati.
+
+\TODO
+
+
+ 
+	\subsection{Esercizio 3.9}
+Inserire due esempi di utilizzo della function implementata per il punto 8 e confrontare la soluzione ottenuta con quella fornita dal comando $A\setminus b$.
+
+\TODO
+
+
+ 
+	\subsection{Esercizio 3.10}
+Scrivere una function che realizza il metodo di Newton per un sistema nonlineare (prevedere un numero massimo di iterazioni e utilizzare il criterio di arresto basato sull’incremento in norma eucliedea). Utilizzare la function costruita al punto 4 per la risoluzione del sistema lineare ad ogni iterazione.
+
+\TODO
+
+
+ 
+	\subsection{Esercizio 3.11}
+Verificato che la funzione $f(x_1,x_2) = x_1^2 + x_2^3 - x_1x_2$ ha un punto di minimo relativo in $(1/12, 1/6)$, costruire una tabella in cui si riportano il numero di iterazioni eseguite, e la norma eucliedea dell’ultimo incremento e quella dell’ errore con cui viene approssimato il risultato esatto utilizzando la function sviluppata al punto precedente per valori delle tolleranze pari a $10^{-t}$, con $t=3,6$. Utilizzare $(1/2, 1/2)$ come punto di innesco, verificare che la norma dell'errore è molto più piccola di quella dell'incremento (come mai?).
 
 \TODO
