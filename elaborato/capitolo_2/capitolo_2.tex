@@ -73,22 +73,129 @@ Inoltre si evidenzia il costo di due valutazioni di funzione per ogni iterazione
 
 Costruire una seconda tabella analoga alla precedente relativa ai metodi di Newton, di Newton modificato e di accelerazione di Aitken applicati alla funzione polinomiale P a partire dal punto di innesco $x_0 = 0$. Commentare i risultati riportati in tabella.
 
-\TODO
+\par
+Partendo da $x0=0$ si spingono i metodi iterativi ad avvicinarsi alla radice $x1=1$ che ha molteplicità pari a 2. In questo caso si ha che il metodo di newton classico ha convergenza solo lineare ma, dato che la molteplicità è conosciuta, è possibile utilizzare la versione modificata che ripristina la convergenza quadratica.
+La tabella seguente mostra il numero di iterazioni e di valutazione di funzione che vengono fatti da ciascun metodo:
 
+\begin{tabular}{ c | c | c | c | c | c | c }
 
+\multirow{2}{*}{$tolx$} & \multicolumn{2}{c}{newton} & \multicolumn{2}{c}{newton mod} & \multicolumn{2}{c}{aitken} \\
+\cline{2-7}
+				 & it & feval & it & feval & it & feval \\
+\hline
+       0.1     &  3 &  8     & 2 &  6     & 2 &  8 \\
+      0.01     &  7 & 16     & 3 &  8     & 3 & 12 \\
+     0.001     & 10 & 22     & 4 & 10     & 4 & 16 \\
+    0.0001     & 14 & 30     & 4 & 10     & 4 & 16 \\
+     1e-05     & 17 & 36     & 4 & 10     & 4 & 16 \\
+     1e-06     & 20 & 42     & 5 & 12     & 4 & 16 \\
+     1e-07     & 24 & 50     & 5 & 12     & 5 & 20 \\
+     1e-08     & 28 & 58     & 5 & 12     & 5 & 20 \\
+     1e-09     & 28 & 58     & 5 & 12     & 5 & 20 \\
+     1e-10     & 28 & 58     & 5 & 12     & 5 & 20 \\
+
+\end{tabular}
+
+\textbf{Script} usato per generare la tabella:
+\lstinputlisting{./capitolo_2/esercizio_2_3.m}
+
+Metodo di \textbf{aitken}:
+\lstinputlisting{./capitolo_2/aitken.m}
+
+Metodo di \textbf{newton modificato}: è stato modificato il core stesso del metodo di newton, aggiungendo un parametro opzionale $m$ che viene valorizzato a $1$ di default (metodo di newton normale).
 
 	\subsection{Esercizio 2.4}
 
 Definire una procedura iterativa basata sul metodo di Newton per approssimare $\sqrt{\alpha}$ per un assegnato $\alpha > 0$. Costruire una tabella dove
 si riportano le successive approssimazioni ottenute e i corrispondenti errori assoluti (usare l’approssimazione Matlab di $\sqrt{\alpha}$ per il calcolo dell'errore) nel caso in cui $\alpha = 5$ partendo da $x_0 = 5$.
 
-\TODO
+Il problema di calcolare la $\sqrt{\alpha}$ può essere visto come la ricerca degli zeri di una funzione $f(x) \equiv x^2 - \alpha$ che due radici $x1=\sqrt{\alpha}$ e $x2= -\sqrt{\alpha}$ entrambe con molteplicità = 1; date
+\begin{equation*}
+	\begin{split}
+		f(x) & = x^2 - \alpha \\
+		f'(x) & = 2x
+	\end{split}
+\end{equation*}
+l'espressione funzionale del metodo di Newton diventa:
+\begin{equation*}
+	\begin{split}
+		x_{i+1} = x_i - \frac{x_i}{f'(x_i)} & = x_i - \frac{x^2-\alpha}{2x_i} = \frac{2x_i^2}{2x_i} - \frac{x^2-\alpha}{2x_i} \\
+		& = \frac{2x_i^2 - x^2 + \alpha}{2x_i} = \frac{x_i^2+\alpha}{2x_i} = \frac{x_i}{2} + \frac{\alpha}{2x_i} \\
+		& = \frac{1}{2}(x_i + \frac{\alpha}{x_i})
+	\end{split}	
+\end{equation*}
 
+Utilizzando lo script:
+\lstinputlisting{./capitolo_2/esercizio_2_4.m}
 
+che richiama la funzione:
+\lstinputlisting{./capitolo_2/newton_sqrt.m}
+
+i risultati che si ottengono sono:
+\begin{table}[]
+\begin{tabular}{|r|r|}
+\hline
+\rowcolor[HTML]{303498} 
+\multicolumn{1}{|c|}{\cellcolor[HTML]{303498}{\color[HTML]{FFFFFF} \textbf{x}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{303498}{\color[HTML]{FFFFFF} \textbf{abs\_e}}} \\ \hline
+3                                                                               & 0.76393202250021                                                                    \\ \hline
+2.33333333333333                                                                & 0.0972653558335437                                                                  \\ \hline
+2.23809523809524                                                                & 0.00202726059544833                                                                 \\ \hline
+2.23606889564336                                                                & 9.18143573613861e-07                                                                \\ \hline
+2.23606797749998                                                                & 1.88293824976427e-13                                                                \\ \hline
+2.23606797749979                                                                & 0                                                                                   \\ \hline
+2.23606797749979                                                                & 0                                                                                   \\ \hline
+\end{tabular}
+\end{table}
 
 	\subsection{Esercizio 2.5}
 
 Definire una procedura iterativa basata sul metodo delle secanti sempre per approssimare $\sqrt{\alpha}$ per un assegnato $\alpha > 0$. Completare la tabella
 precedente aggiungendovi i risultati ottenuti con tale procedura partendo da $x_0 = 5$ e $x_1=3$. Commentare i risultati riportati in tabella.
 
-	
+\par 
+Anche in questo caso si utilizza un metodo iterativo per la ricerca degli zeri per la funzione $f(x) \equiv x^2 - \alpha$. Il metodo iterativo delle secanti ha la seguente espressione funzionale:
+\begin{equation*}
+	\begin{split}
+		x_{i+1} & = x_i-\frac{f(x_i)}{\varphi_i} \\
+		f'(x_i) & \approx \frac{f(x_i) - f(x_{i-1})}{x_i - x_{i-1}} \equiv \varphi_i \\
+		x_{i+1} & = \frac{f(x_i)x_{i-1}-f(x_{i-1})x_i}{f(x_i)-f(x_{i-1})} \\
+	\end{split}
+\end{equation*}
+Che per $f(x) \equiv x^2 - \alpha$ diventa:
+\begin{equation*}
+	\begin{split}
+		x_{i+1} & = \frac{f(x_i)x_{i-1}-f(x_{i-1})x_i}{f(x_i)-f(x_{i-1})} = \frac{(x_i^2-\alpha)x_{i-1}-(x^2_{i-1}-\alpha)x_i}{x_i^2-\alpha - x_{i-1}^2 + \alpha}\\
+		& = \frac{ x_i^2x_{i-1} - \alpha x_{i-1} - x^2_{i-1}x_i + \alpha x_i }{ x_i^2 - x_{i-1}^2 } \\
+		& = \frac{ x_i x_{i-1} ( x_i - x_{i-1} ) + \alpha ( x_i - x_{i-1} ) }{ ( x_i - x_{i-1} ) ( x_i + x_{i-1} ) } \\
+		& = \frac{ ( x_i - x_{i-1} ) (x_i x_{i-1}  + \alpha) }{ ( x_i - x_{i-1} ) ( x_i + x_{i-1} ) } \\ 
+		& = \frac{ x_i x_{i-1}  + \alpha }{ x_i + x_{i-1} }
+	\end{split}
+\end{equation*}
+
+Utilizzando lo script:
+\lstinputlisting{./capitolo_2/esercizio_2_5.m}
+
+che richiama la funzione:
+\lstinputlisting{./capitolo_2/secanti_sqrt.m}
+
+i risultati che si ottengono sono:
+\begin{table}[]
+\begin{tabular}{|r|r|}
+\hline
+\rowcolor[HTML]{303498} 
+\multicolumn{1}{|c|}{\cellcolor[HTML]{303498}{\color[HTML]{FFFFFF} \textbf{x}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{303498}{\color[HTML]{FFFFFF} \textbf{abs\_e}}} \\ \hline
+5                                                                               & 2.76393202250021                                                                    \\ \hline
+3                                                                               & 0.76393202250021                                                                    \\ \hline
+2.5                                                                             & 0.26393202250021                                                                    \\ \hline
+2.27272727272727                                                                & 0.0366592952274831                                                                  \\ \hline
+2.23809523809524                                                                & 0.00202726059544833                                                                 \\ \hline
+2.23608445297505                                                                & 1.6475475258293e-05                                                                 \\ \hline
+2.23606798496486                                                                & 7.46507344828728e-09                                                                \\ \hline
+2.23606797749982                                                                & 2.75335310107039e-14                                                                \\ \hline
+2.23606797749979                                                                & 4.44089209850063e-16                                                                \\ \hline
+2.23606797749979                                                                & 0                                                                                   \\ \hline
+2.23606797749979                                                                & 0                                                                                   \\ \hline
+\end{tabular}
+\end{table}
+
+Si verifica subito che il metodo delle secanti converge più lentamente rispetto al calcolo della stessa radice usando il metodo di newton, questo perché il metodo di newton ha convergenza quadratica mentre il metodo delle secanti leggermente inferiore ($\approx 1.6$).

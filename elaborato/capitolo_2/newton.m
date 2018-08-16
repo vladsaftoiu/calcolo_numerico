@@ -1,6 +1,6 @@
 function [ x, evals ] = newton( x0, f, f1, tolx, itmax, m )
     
-    if nargin <=5, m=1; , end
+    if nargin <=5, m=1;  end
     
     fx = feval( f, x0 );
     f1x = feval( f1, x0 );
@@ -15,7 +15,7 @@ function [ x, evals ] = newton( x0, f, f1, tolx, itmax, m )
         x = x0 -m*fx/f1x;
     end
     
-    evals = 2 +2 * i;
+    evals = 2 + 2 * i;
     
     if (abs(x-x) > tolx), disp('il metodo non converge'), end
 end
