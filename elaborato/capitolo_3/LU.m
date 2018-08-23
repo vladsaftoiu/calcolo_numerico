@@ -1,4 +1,4 @@
-function [A] = LU( A )
+function [ A ] = LU( A )
 %LU determina, se possibile, la fattorizzazione LU della matrice A in
 %ingresso
 %   A: matrice da fattorizzare

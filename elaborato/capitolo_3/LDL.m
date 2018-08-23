@@ -1,6 +1,10 @@
-function [A] = LDL( A )
-%LDL Summary of this function goes here
-%   Detailed explanation goes here
+function [ A ] = LDL( A )
+%LDL rewrites A with its L D L' factorization
+%  A input matrix (must be positive definite)
+%  output:
+%  L lower triangual matrix with diagonal set to 1
+%  D diagonal matrix
+%  L' transposition of L
     
     n = size(A);
     if A(1,1)<=0, error('la matrice non e'' sdp'), end
