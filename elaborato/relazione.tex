@@ -8,6 +8,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{physics}
 \usepackage{multirow}
+\usepackage{xifthen}
 
 \title{Calcolo Numerico - die Beziehung}
 \date{10 giugno 2018}
@@ -47,9 +48,9 @@
 
 \begin{document}
 	
-	\newcommand{\TODO}[0]{
+	\newcommand{\TODO}[1][]{
 		\begin{shaded*} 
-			da fare
+			da fare \ifthenelse{\isempty{#1}}{ }{ (: #1 ) }
 		\end{shaded*}
 	}
 	
