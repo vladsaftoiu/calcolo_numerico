@@ -152,17 +152,21 @@ La funzione è stata testata verificando la $\mathbf{\tilde{x}}$ risultato dell'
 \lstinputlisting{./capitolo_3/solve_bidiagonal_toeplitz_test.m}
 
 
+
 	\subsection{Esercizio 3.8}
 Scrivere una function che, dato un sistema lineare sovradeterminato $A\mathbf{x}=\mathbf{b}$ con $A \in \mathcal{R}^{m \times n}, m > n, rank(A) = n$ e $\mathbf{b} \in \mathcal{R}^m$, preso come input $\mathbf{b}$ e l'output dell'algoritmo 3.8 del libro (matrice $A$ riscritta con la parte significativa di $R$ e la parte significativa dei vettori di Householder normalizzati con prima componente unitaria), ne calcoli efficientemente la soluzione nel senso dei minimi quadrati.
 
-\TODO
-
+La function è la seguente:
+\lstinputlisting{./capitolo_3/solve_with_householder.m}
+\TODO{verificare porzione core, che cosa fa e se si può riscrivere}
 
  
 	\subsection{Esercizio 3.9}
-Inserire due esempi di utilizzo della function implementata per il punto 8 e confrontare la soluzione ottenuta con quella fornita dal comando $A\setminus b$.
+Inserire due esempi di utilizzo della function implementata per il punto 8 e confrontare la soluzione ottenuta con quella fornita dal comando $A\setminus \mathbf{b}$.
 
-\TODO
+La function \lstinline{solve_with_householder} è stata testata con il seguente script:
+\lstinputlisting{./capitolo_3/solve_with_householder_test.m}
+Nel primo esempio viene usata una matrice $170 \times 15$ ottenendo un risultato che rispetto a $A\setminus \mathbf{b}$ differisce di un ordine $10^{-12}$, nel secondo esempio si usa la matrice dell'esercizio 3.31 del libro di testo, la differenza qui è dell'ordine di $10^{-15}$.
 
 
  
