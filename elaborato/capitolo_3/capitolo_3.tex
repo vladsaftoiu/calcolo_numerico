@@ -127,10 +127,29 @@ Una fattorizzazione $LU$ di A è: $L = \begin{pmatrix} 1 & 0 \\ \frac{1}{\epsilo
 Lo script usato per questo esercizio è:
 \lstinputlisting{./capitolo_3/exercise_6.m}
 
+
 	\subsection{Esercizio 3.7}
 Scrivere una function Matlab specifica per la risoluzione di un sistema lineare con matrice dei coefficienti $A \in \mathcal{R}^{n \times n}$ bidiagonale inferiore a diagonale unitaria di Toeplitz, specificabile con uno scalare $\alpha$. Sperimentarne e commentarne le prestazioni (considerare il numero di condizionamento della matrice) nel caso in cui $n = 12$ e $\alpha =100$ ponendo dapprima $b = (1, 101, \dots , 101)^T$ (soluzione esatta $\tilde{x} = (1, \dots , 1)^T$ ) e quindi $b = 0.1 * (1, 101, \dots , 101)^T$ (soluzione esatta $\tilde{x} = (0.1, \dots , 0.1)^T$).
 
-\TODO
+La funzione per risolvere una matrice bidiagonale inferiore di Toeplitz è la seguente:
+\lstinputlisting{./capitolo_3/solve_bidiagonal_toeplitz.m}
+Dato che la matrice bidiagonale inferiore di T. è (se non ho capito male) della forma:
+\[
+\begin{pmatrix}
+	1&0&0&0&0\\
+	\alpha&1&0&0&0\\
+	0&\alpha&1&0&0\\
+	0&0&\alpha&1&0\\
+	0&0&0&\alpha&1\\
+\end{pmatrix}
+\]
+non è necessario passare alla funzione una matrice intera ma soltanto il vettore $\mathbf{b}$ ed il parametro $\alpha$.
+La risoluzione del sistema passa quindi per la seguente semplice formula: 
+\fek{x_i = b_i-\alpha x_{i-1} \qquad i=2,3...n } 
+Nella funzione Matlab è quindi possibile riscrivere direttamente il vettore in ingresso $\mathbf{b}$.
+L'algoritmo ha quindi una occupazione di memoria pari alle $n+1$ posizioni di memoria date dal vettore in ingresso $\mathbf{b}$ e dal parametro $\alpha$; riguardo al numero di operazioni ad ogni passo si esegue una sottrazione e una moltiplicazione quindi queste saranno $2(n-1)$ flops.
+La funzione è stata testata verificando la $\mathbf{\tilde{x}}$ risultato dell'algoritmo rispetto alla $\mathbf{x} = A\setminus\mathbf{b}$:
+\lstinputlisting{./capitolo_3/solve_bidiagonal_toeplitz_test.m}
 
 
 	\subsection{Esercizio 3.8}
