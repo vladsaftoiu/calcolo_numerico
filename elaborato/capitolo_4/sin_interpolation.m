@@ -5,9 +5,9 @@ function [] = sin_interpolation( )
     
     plot(sin(ab), '.k'); %black
     hold on;
-    plot(newton(xi, sin(xi), ab), 'r'); %red
+    plot( newton_interpolation(xi, sin(xi), ab), 'r' ); %red
     hold on;
-    plot(lagrange(xi, sin(xi), ab), 'b'); %blue
+    plot( lagrange(xi, sin(xi), ab), 'b' ); %blue
     
     %plot(hermite(xi, sin(xi), cos(xi), ab), 'g') %green
     

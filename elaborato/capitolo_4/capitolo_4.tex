@@ -1,5 +1,7 @@
 \section{Capitolo 4}
 
+
+
 	\subsection{Esercizio 4.1}
 Scrivere una function Matlab che implementi il calcolo del polinomio interpolante di grado $n$ in forma di Lagrange. La forma della function deve essere del tipo \texttt{ y = lagrange( xi, fi, x ) }.
 
@@ -13,6 +15,8 @@ La forma di Lagrange del polinomio interpolante è:
 \end{equation}
 La function Matlab che implementa la \ref{lagrange_equation} è:
 \lstinputlisting{./capitolo_4/lagrange.m}
+Costi: dati $n$ numero di ascisse di interpolazione e $m$ numero di punti da calcolare l'occupazione di memoria è pari al vettore $\mathbf{y}$ in output che ha dimensione $m$ mentre il numero di flops è $2mn(2n+1)$.
+
 
 
 	\subsection {Esercizio 4.2}
@@ -30,7 +34,9 @@ La forma di Newton del polinomio interpolante rispetto alla base di Newton è:
 	\sum_{k=0}^n f[x_0, ... , x_k]\omega_k(x)
 \end{equation} 
 La function matlab che implementa \ref{newton_equation} è:
-\lstinputlisting{./capitolo_4/newton.m}
+\lstinputlisting{./capitolo_4/newton_interpolation.m}
+
+
 
 	\subsection {Esercizio 4.3}
 Scrivere una function Matlab che implementi il calcolo del polinomio interpolante di Hermite. La forma della function deve essere del tipo \texttt{ y = hermite( xi, fi, f1i, x ) }
@@ -43,6 +49,8 @@ con $\lim{x_{i+\frac{1}{2}} = x_i}$ si ha che $x_0 = x_1$, $x_2=x_3$, etc. Perta
 
 La function Matlab che implementa il polinomio interpolante di Hermite è:
 \lstinputlisting{./capitolo_4/hermite.m}
+
+
 
 	\subsection {Esercizio 4.4}
 Utilizzare le functions degli esercizi precedenti per disegnare l'approssimazione della funzione $sin(x)$  nell'intervallo $[0, 2\pi]$, utilizzando le ascisse di interpolazione $x_{i}=i\pi, i=0,1,2$.
@@ -57,22 +65,35 @@ Il risultato è stato riportato in figura \ref{sin_interpolation}. \textbf{ veri
     \caption{Interpolazione usando forma di Lagrange e di Newton}
 \end{figure} 
 
+
+
 	\subsection {Esercizio 4.5}
 Scrivere una function Matlab che implementi la \texttt { spline } cubica interpolante (naturale o \textit{not-a-knot}, come specificato in ingresso) delle coppie di dati assegnate. La forma della function deve essere del tipo: \texttt { y = spline3( xi, fi, x, tipo ) }.
 
-Formula per il calcolo della spline cubica:
-\begin{equation}
-	s_3(x) = \frac{(x - x_{i-1})^2m_i + (x_i-x)^2m_{i-1}}{6h_i} + q_i, \;\; x \in [x_{i-1}, x_i]
-\end{equation}
+Formule per il calcolo della spline cubica:
+\begin{equation*}
+	\begin{split}
+		\forall x \in \lbrack x_{i-1}, x_i \rbrack & : \\
+		s_3(x_i) & = \frac{h_i^2}{6}m_i + q_i h_i +r_i \\
+		s_3(x_{i-1}) & = \frac{h_i^2}{6}m_{i-1} + r_i \\
+		h_i & = x_i - x_{i-1} \\
+		q_i & = \frac{f_i - f_{i-1}}{h_i} - \frac{h_i}{6}(m_i -m_{i-1})\\ 
+		r_i &= f_{i-1}  - \frac{h_i^2}{6}m_{i-1} \\
+		\forall i = 1, 2 \cdots n-1 & : \\
+		\varphi_i & = \frac{h_i}{h_i+h_{i+1}} \\
+		\xi_i & = \frac{h_{i+1}}{h_i+h_{i+1}} 
+	\end{split}
+\end{equation*}
 
-Condizioni per il calcolo della spline naturale:
+I valori $m_i$ sono la soluzione dei seguenti sistemi lineari tridiagonali,
+per la spline \textit{naturale}:
 \[
 	\begin{pmatrix}
-		2 		& \epsilon_1 	& 			& 		& 	\\
-		\phi_2 	& 2			& \epsilon_2	& 		& 	\\
+		2 		& \xi_1 	& 			& 		& 	\\
+		\varphi_2 	& 2			& \xi_2	& 		& 	\\
 				& ...			& ...			& ... 	& 	\\
-				& 			& ...			& ... 	& \epsilon_{n-2}	\\
-				& 			& 			& \phi_{n-1} 	& 2	\\
+				& 			& ...			& ... 	& \xi_{n-2}	\\
+				& 			& 			& \varphi_{n-1} 	& 2	\\
 	\end{pmatrix}
 	\begin{pmatrix}
 		m_1 \\
@@ -84,25 +105,66 @@ Condizioni per il calcolo della spline naturale:
 	= 6
 	\begin{pmatrix}
 		f[x_0, x_1, x_2] \\
-		m_2 \\
+		f[x_1, x_2, x_3] \\
 		... \\
 		... \\
-		m_{n-1}
+		f[x_{n-2}, x_{n-1}, x_n] \\
 	\end{pmatrix}
 \]
-Condizioni per il calcolo della spline cubica:
+mentre per la spline \textit{not-a-knot}:
+\[
+	\begin{smallmatrix}
+		1 & 0 & & & & & \\
+		\varphi_1 & 2-\varphi_1 & \xi_1 - \varphi_1 & & & & \\
+		 & \varphi_2 & 2 & \xi_2 & & & \\
+		 & & ... & ... & ... & & \\
+		 & & & \varphi_{n-2} & 2 & \xi_{n-2} & \\
+		 & & & &  \varphi_{n-1} - \xi_{n-1} & 2-\xi_{n-1} & \xi_{n-1} \\
+		 & & & & & 0 & 1 \\
+	\end{smallmatrix}
+	\begin{smallmatrix}
+		m_0+m_1+m_2 \\
+		m_1 \\
+		... \\
+		... \\
+		... \\
+		m_{n-1}\\
+		m_n+m_{n-1}+m_{n-2} \\		
+	\end{smallmatrix}
+	= 6
+	\begin{smallmatrix}
+		f[x_0, x_1, x_2] \\
+		f[x_0, x_1, x_2] \\
+		... \\
+		... \\
+		... \\
+		f[x_{n-2}, x_{n-1}, x_n] \\
+		f[x_{n-2}, x_{n-1}, x_n] \\
+	\end{smallmatrix}
+\]
+
+
+
 
 	\subsection {Esercizio 4.6}
 Scrivere una function Matlab che implementi il calcolo delle ascisse di Chebyshev per il polinomio interpolante di grado $n$, su un generico intervallo $[a,b]$. La function deve essere del tipo: \texttt { xi = ceby( n, a, b ) }.
 
+
+
 	\subsection {Esercizio 4.7}
 Utilizzare le function degli Esercizi 4.1 e 4.6 per graficare l'approssimazione della funzione di Runge sull'intervallo $[-6,6]$ per $n= 2,4, ... ,40$. Stimare, numericamente, l'errore commesso in funzione del grado $n$ del polinomio interpolante.
+
+
 
 	\subsection {Esercizio 4.8}
 Relativamente al precedente esercizio, stimare numericamente, la crescita della costante di Lebesgue.
 
+
+
 	\subsection {Esercizio 4.9}
 Utilizzare la function dell'esercizio 4.1 per approssimare la funzione di Runge sull'intervallo $[-6,6]$, su una partizione uniforme di $n+1$ ascisse, $n= 2,4, ... ,40$. Stimare le corrispondenti costanti di Lebesgue.
+
+
 
 	\subsection {Esercizio 4.10}
 Stimare, nel senso dei minimi quadrati, posizione, velocità iniziale ed accelerazione relative a un moto rettilineao uniformemente accelerato per cui sono note le seguenti misurazioni delle coppie (tempo, spazio): (1, 2.9), (1, 3.1), (2, 6.9), (2, 7.1), (3, 12.9), (3, 13.1), (4, 20.9), (4, 21.1), (5, 30.9), (5, 31.1).

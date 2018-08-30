@@ -1,4 +1,4 @@
-function [y] = newton( xi, fi, x)
+function [ y ] = newton_interpolation( xi, fi, x)
 %NEWTON calcola il polinomio interpolante di grado n in forma di newton
 %   xi: vettore delle ascisse
 %   fi: vettore delle ordinate
@@ -9,13 +9,13 @@ function [y] = newton( xi, fi, x)
     %calcolo le differenze divise
     for i = 1 : n+1
         for j = n+1 : -1 : i+1
-            fi(j) = (fi(j)-fi(j-1)) / (xi(j) - xi(j-i));
+            fi(j) = ( fi(j) - fi(j-1) ) / ( xi(j) - xi(j-i) );
         end
     end
     
     y = fi(n+1) * ones(size(x));
     for l = n+1 : -1 : 1
-        y = y.*(x-xi(l)) + fi(l);
+        y = y.*( x - xi(l) ) + fi(l);
     end
 
 end
