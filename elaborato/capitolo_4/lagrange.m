@@ -5,7 +5,7 @@ function [ y ] = lagrange( xi, fi, x )
 %   x: vettore dei punti da calcolare  
     
     m = length(x);
-    y = zeros(1, m);
+    y = zeros(m, 1);
     
     for k = 1 : m
         l = lagrange_c( xi,  x(k) );
@@ -19,7 +19,7 @@ function [ y ] = lagrange_c( xi, x )
 %   x: vettore dei punti da calcolare
 
     n = length(xi);
-    y = ones(1, n);
+    y = ones(n, 1);
     for k = 1 : n
         for j = 1 : n
             if (k~=j) 
