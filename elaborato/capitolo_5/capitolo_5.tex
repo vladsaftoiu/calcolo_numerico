@@ -1,5 +1,7 @@
 \section{Capitolo 5}
 
+
+
 	\subsection{Esercizio 5.1}
 Scrivere una function Matlab che implementi la formula composita dei trapezi su $n+1$ ascisse equidistanti nell'intervallo $[a, b]$, relativamente alla funzione implementata da \texttt{fun(x)}. 
 La function deve essere del tipo: \texttt{ [If] = trapcomp( n, a, b, fun ) }.
@@ -9,6 +11,8 @@ La formula composita dei trapezi è così definita:
 \end{equation}
 La function Matlab che implementa la \ref{trapezi_composite_equation} è:
 \lstinputlisting{./capitolo_5/trapcomp.m}
+
+
 
 	\subsection{Esercizio 5.2}
 Scrivere una function Matlab che implementi la formula composita di Simpson sulle $2n+1$ ascisse equidistanti nell'intervallo $[a, b]$, relativamente alla funzione implementata da \texttt{fun(x)}. 
@@ -20,3 +24,7 @@ La formula composita di Simpson è così definita:
 La function Matlab che implementa la \ref{simpson_composite_equation} è:
 \lstinputlisting{./capitolo_5/simpcomp.m}
 
+
+
+	\subsection{Esercizio 5.3}
+	Scrivere una function Matlab che implementi la formula composita dei trapezi adattativa nell’intervallo $\lbrack a,b \rbrack$  relativamente alla funzione implementata da \lstinline{fun(x)}, e con tolleranza \lstinline{tol}. La function deve essere del tipo: \lstinline{If = trapad( a, b, fun, tol )}
