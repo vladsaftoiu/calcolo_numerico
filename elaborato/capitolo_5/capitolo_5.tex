@@ -28,3 +28,37 @@ La function Matlab che implementa la \ref{simpson_composite_equation} è:
 
 	\subsection{Esercizio 5.3}
 	Scrivere una function Matlab che implementi la formula composita dei trapezi adattativa nell’intervallo $\lbrack a,b \rbrack$  relativamente alla funzione implementata da \lstinline{fun(x)}, e con tolleranza \lstinline{tol}. La function deve essere del tipo: \lstinline{If = trapad( a, b, fun, tol )}
+	
+	La function è la seguente:
+\lstinputlisting{./capitolo_5/trapad.m}
+La function prevede anche la possibilità di calcolare il numero di valutazioni di funzione necesssarie per raggiungere l'integrale della funzione entro una certa tolleranza.
+
+
+
+	\subsection{Esercizio 5.4}
+	Scrivere una function Matlab che implementi la formula composita di Simpson adattativa nell’intervallo $\lbrack a,b \rbrack$  relativamente alla funzione implementata da \lstinline{fun(x)}, e con tolleranza \lstinline{tol}. La function deve essere del tipo: \lstinline{If = simpad( a, b, fun, tol )}
+	
+		La function è la seguente:
+\lstinputlisting{./capitolo_5/simpad.m}
+La function prevede anche la possibilità di calcolare il numero di valutazioni di funzione necesssarie per raggiungere l'integrale della funzione entro una certa tolleranza.
+
+
+
+	\subsection{Esercizio 5.5}
+	Calcolare quante valutazioni di funzione sono necessarie per ottenere una approssimazione di
+\begin{equation*}
+	\mathcal{I}(f) = \int_{0}^{1} e^{-10^6x}dx
+\end{equation*}
+che vale $10^{-6}$, in doppia precisione IEEE, con una tolleranza di $10^{-9}$, utilizzando le functions dei precedenti esercizi. Argomentare quantitativamente la risposta.
+
+Utilizzando le functions \lstinline{ trapcomp, simpcomp,  trapad, simpad } precedentemente esposte si verifica, tramite lo script 
+\lstinputlisting{./capitolo_5/integrals_test.m}
+ che il numero di valutazioni di funzione sono: 
+\begin{tabular}{c | r}
+	\textbf{function} & \textbf{nr. evals}\\
+	\hline
+	trapcomp & $\approx 10^{6}$ \\
+	simpcomp & $\approx 10^{5}$ \\
+	trapad & 8527 \\ 
+	simpad & 217 
+\end{tabular}
