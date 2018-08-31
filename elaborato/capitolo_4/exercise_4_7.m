@@ -7,7 +7,7 @@ fh = matlabFunction(f);
 
 a = -6;
 b = 6;
-xs = a : .2 : b; % abscissas where I want to calculate the p(x) value
+xs = a : .2 : b; % "nodes" where I want to calculate the p(x) value
 
 %see cap 4.5 using chebyshev abscissas and error estimate, runge function
 %got plenty of derivatives

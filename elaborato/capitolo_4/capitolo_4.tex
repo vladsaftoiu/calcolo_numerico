@@ -217,10 +217,70 @@ Considerando che la costante di Lebesgue nel caso delle ascisse di Chebyshev è 
      40   &   2.3484  &  1.4101  \\
 \end{tabular}
 
+
+
 	\subsection {Esercizio 4.9}
 Utilizzare la function dell'esercizio 4.1 per approssimare la funzione di Runge sull'intervallo $[-6,6]$, su una partizione uniforme di $n+1$ ascisse, $n= 2,4, ... ,40$. Stimare le corrispondenti costanti di Lebesgue.
 
+Lo script che usa e graficizza il risultato della function \lstinline{lagrange} è il seguente:
+\lstinputlisting{./capitolo_4/exercise_4_9.m}
+il valore $n$ è stato ristretto a $n=12$ perché oltre la funzione interpolante assume valori elevatissimi in corrispondenza degli estremi ed il grafico non avrebbe nessuna valenza informativa. Già con $n=12$ si verifica che verso gli estremi la funzione assume valori estremamente elevati e questo è dovuto alla crescita estremamente rapida della costante di Lebesgue. Usando infatti questo script:
+\lstinputlisting{./capitolo_4/exercise_4_9_lebesgue.m}
+anch'esso ristretto a $n=12$ per quanto riguarda il grafico, si verifica che la costante aumenta molto rapidamente all'aumentare di $n$. La tabella riporta questa crescita in maniera più dettagliata:
+
+
+\TODO[inserire i grafici e tabella]
 
 
 	\subsection {Esercizio 4.10}
 Stimare, nel senso dei minimi quadrati, posizione, velocità iniziale ed accelerazione relative a un moto rettilineao uniformemente accelerato per cui sono note le seguenti misurazioni delle coppie (tempo, spazio): (1, 2.9), (1, 3.1), (2, 6.9), (2, 7.1), (3, 12.9), (3, 13.1), (4, 20.9), (4, 21.1), (5, 30.9), (5, 31.1).
+
+La formula del moto uniformemente accelerato è:
+\begin{equation*}
+	x(t) = x_0 + v_0t +\frac{1}/{2}at^2
+\end{equation*}
+che è un polinomio di grado $n=2$ quindi abbiamo bisogno di almeno $n+1$ ascisse distinte, in questo caso ne abbiamo $5$ pertanto stimare $x_0, \quad v_0, \quad a_0$ equivale a risolvere il seguente sistema sovradeterminato:
+
+\[
+	A = 
+	\begin{pmatrix}
+		1^0 & 1^1 & 1^2 \\
+		1^0 & 1^1 & 1^2 \\
+		2^0 & 2^1 & 2^2 \\
+		2^0 & 2^1 & 2^2 \\
+		3^0 & 3^1 & 3^2 \\
+		3^0 & 3^1 & 3^2 \\
+        	4^0 & 4^1 & 4^2 \\
+		4^0 & 4^1 & 4^2 \\
+        	5^0 & 5^1 & 5^2 \\
+		5^0 & 5^1 & 5^2 \\
+	\end{pmatrix}
+	\begin{pmatrix}
+		x_0 \\
+		v_0 \\
+		a_0 \\
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		2.9 \\
+		3.1 \\
+		6.9 \\
+		7.1 \\
+		12.9 \\
+		13.1 \\
+		20.9 \\
+		21.1 \\
+		30.9 \\
+		31.1 \\
+	\end{pmatrix}
+\]
+
+Usando lo script:
+
+\lstinputlisting{./capitolo_4/exercise_4_10.m}
+che risolve il sistema tramite una fattorizzazione $QR$ della matrice $A$ si ottiengono i risultati:
+\[
+		\mathbf{x} = \begin{pmatrix} x_0 \\ v_0 \\ a_0 \end{pmatrix}  = \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} 
+		, \qquad
+		r \equiv A\mathbf{x} - \mathbf{b} = \begin{pmatrix} 0.1 \\ -0.1 \\ 0.1 \\ -0.1 \\ 0.1 \\ -0.1 \\ 0.1 \\ -0.1 \\ 0.1 \\ -0.1 \\ \end{pmatrix} 
+\]

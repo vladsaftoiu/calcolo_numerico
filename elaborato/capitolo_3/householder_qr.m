@@ -1,6 +1,6 @@
 function [ A ] = householder_qr( A )
 
-    [m,n] = size(A);
+    [ m, n ] = size(A);
    
     for i = 1 : n
         alfa = norm( A(i:m,i) );

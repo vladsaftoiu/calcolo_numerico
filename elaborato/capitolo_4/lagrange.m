@@ -16,14 +16,14 @@ end
 function [ y ] = lagrange_c( xi, x )
 %LAGRANGE_C calcola i coefficienti Lkn di lagrange
 %   xi: vettore delle ascisse
-%   x: vettore dei punti da calcolare
+%   x: punto in cui calcolare
 
     n = length(xi);
     y = ones(n, 1);
     for k = 1 : n
         for j = 1 : n
-            if (k~=j) 
-               y(k) = y(k) * ( x-xi(j ))/( xi(k)-xi(j) );
+            if (k ~= j) 
+               y(k) = y(k) * ( x - xi(j) ) / ( xi(k) - xi(j) );
             end
         end
     end

@@ -1,5 +1,6 @@
 function [ b ] = solve_with_householder( A, b )
-    [m,n] = size(A);
+    
+    [ m, n ] = size(A);
     A = householder_qr(A);
     Qt = eye(m);
     
@@ -8,4 +9,5 @@ function [ b ] = solve_with_householder( A, b )
     end
     
     b = solve_t_sup( triu(A(1:n, :)), Qt(1:n, :)*b );
+    
 end
