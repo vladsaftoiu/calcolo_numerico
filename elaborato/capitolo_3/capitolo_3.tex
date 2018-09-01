@@ -173,11 +173,53 @@ Nel primo esempio viene usata una matrice $170 \times 15$ ottenendo un risultato
 	\subsection{Esercizio 3.10}
 Scrivere una function che realizza il metodo di Newton per un sistema nonlineare (prevedere un numero massimo di iterazioni e utilizzare il criterio di arresto basato sull’incremento in norma eucliedea). Utilizzare la function costruita al punto 4 per la risoluzione del sistema lineare ad ogni iterazione.
 
-\TODO
+	La function che implementa il metodo iterativo di Newton è la seguente:
+\lstinputlisting{./capitolo_3/newton_nonlinear.m}
 
 
  
 	\subsection{Esercizio 3.11}
 Verificato che la funzione $f(x_1,x_2) = x_1^2 + x_2^3 - x_1x_2$ ha un punto di minimo relativo in $(1/12, 1/6)$, costruire una tabella in cui si riportano il numero di iterazioni eseguite, e la norma eucliedea dell’ultimo incremento e quella dell’ errore con cui viene approssimato il risultato esatto utilizzando la function sviluppata al punto precedente per valori delle tolleranze pari a $10^{-t}$, con $t=3,6$. Utilizzare $(1/2, 1/2)$ come punto di innesco, verificare che la norma dell'errore è molto più piccola di quella dell'incremento (come mai?).
 
-\TODO
+Utilizzando lo script:
+\lstinputlisting{./capitolo_3/exercise_3_11.m}
+si verifica che il punto $(1/12, 1/6)$ è stazionario e, utilizzando una versione modificata della function all'esercizio precedente, si estrae la tabella delle norme di incremente e di errore ad ogni iterazione.
+La funzione modificata ha soltanto la firma diversa e restituisce in output gli array delle norme di incremento e di errore:
+\begin{lstlisting}[frame=single]
+	function [nrs, err] = newton_nonlinear_plot(F, x0, itmax, tol, sol)
+	% .....
+	while ( k < itmax ) && ( norm(x - x_last) > tol )
+        
+        k = k + 1;
+        nrs(k) = norm(x - x_last);
+        err(k) = norm(x - sol);
+      	% .....
+\end{lstlisting}
+Il risultato è: \\
+\begin{tabular}{|c|r|r|}
+	\hline
+	\multicolumn{3}{|c|}{\textbf{t=3}}\\
+	\hline
+	\textbf{i} & \multicolumn{1}{c|}{$\norm{\mathbf{d_k}}$} & \multicolumn{1}{c|}{$\norm{\mathbf{e_k}}$}\\
+	\hline
+    		1  &   0.70710678118654  &    0.53359368645273  \\
+     		2  &   0.40311288741492  &    0.14907119849998  \\
+     		3  &   0.10320313742306  &    0.04586806107691  \\
+     		4  &   0.03830219533227  &    0.00756586574464  \\
+     		5  &   0.00728174345762  &    0.00028412228702 \\
+	\hline
+\end{tabular}
+\begin{tabular}{|c|r|r|}
+	\hline
+	\multicolumn{3}{|c|}{\textbf{t=6}}\\
+	\hline
+	\textbf{i} & \multicolumn{1}{c|}{$\norm{\mathbf{d_k}}$} & \multicolumn{1}{c|}{$\norm{\mathbf{e_k}}$}\\
+	\hline
+		1  &    0.7071067811865  &    0.5335936864527  \\
+     		2  &    0.4031128874149  &    0.1490711984999  \\
+    	 	3  &    0.1032031374230  &    0.0458680610769  \\
+     		4  &    0.0383021953322  &    0.0075658657446 \\
+     		5  &    0.0072817434576  &    0.0002841222870  \\
+	     	6  &    0.0002836903857  &    4.3190126192e-07  \\
+	\hline
+\end{tabular}
