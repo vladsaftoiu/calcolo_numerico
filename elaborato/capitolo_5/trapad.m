@@ -3,8 +3,8 @@ function [ I, fevals ] = trapad( fun, a, b, tol, fa, fb, fevals )
 % calculates the integral between a and b for the function f;
 % trapezoidal method is used, also the number of function
 % evaluations is returned
-%   a: right-hand interval boundary 
-%   b: left-hand interval boundary
+%   a: left-hand interval boundary 
+%   b: right-hand interval boundary
 %   fun: function whose integral is to be calculated
 %   tol: tolerance used for break condition
 

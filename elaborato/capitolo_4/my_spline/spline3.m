@@ -2,10 +2,10 @@ function [ y ] = spline3( xi, fi, x, nak )
 % [y] = SPLINE3( xi, fi, x, nak )
 % calculate a cubic spline (natural or not-a-knot) on requested x vector, 
 % given (xi,fi) interpolation pairs
-% xi: vector of interpolation points
-% fi: function value for the interpolation points
-% x: requested points to be evaluated
-% nak: boolean -> true(use not-a-knot) false(use natural spline)
+%   xi: vector of interpolation nodes
+%   fi: function value for the interpolation nodes
+%   x: requested points to be evaluated
+%   nak: boolean -> true(use not-a-knot) false(use natural spline)
 
     n = length(x);
     y = zeros(n,1);

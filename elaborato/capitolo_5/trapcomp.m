@@ -3,8 +3,8 @@ function [ If ] = trapcomp( n, a, b, fun )
 % calculates the integral between a and b for the function f;
 % trapezoidal method is used
 %   n: number of sub intervals for the partition
-%   a: right-hand interval boundary 
-%   b: left-hand interval boundary
+%   a: left-hand interval boundary 
+%   b: right-hand interval boundary
 %   fun: function whose integral is to be calculated
 %   tol: tolerance used for break condition
 

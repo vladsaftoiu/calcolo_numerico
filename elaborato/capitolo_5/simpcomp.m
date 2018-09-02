@@ -3,8 +3,8 @@ function [ If ] = simpcomp( n, a, b, fun )
 % calculates the integratl between a and b for the function f
 % Simpson's composite method for n subintervals is used 
 %   n: number of intervals of the partition
-%   a: right-hand interval boundary 
-%   b: left-hand interval boundary
+%   a: left-hand interval boundary 
+%   b: right-hand interval boundary
 %   fun: function whose integral is to be calculated
 
     m = 2*n;

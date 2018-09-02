@@ -1,8 +1,10 @@
 function [ y ] = lagrange( xi, fi, x )
-%LAGRANGE calcola il polinomio interpolante in forma di Lagrange
-%   xi: vettore delle ascisse
-%   fi: vettore delle ordinate
-%   x: vettore dei punti da calcolare  
+%[ y ] = LAGRANGE( xi, fi, f1i, x ) 
+% calculates the polinomial that interpolate f in xi in the Lagrange form
+%   xi: interpolation nodes vector
+%   fi: function values vector
+%   x: vector of points which are to be evaluated
+    
     
     m = length(x);
     y = zeros(m, 1);

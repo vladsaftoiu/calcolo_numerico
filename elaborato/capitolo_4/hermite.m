@@ -1,14 +1,14 @@
-function [y] = hermite( xi, fi, f1i, x )
-%HERMITE calcola il polinomio interpolante in forma di Hermite
-%   xi: vettore delle ascisse
-%   fi: vettore delle ordinate
-%   f1i: vettore delle derivate prime
-%   x: vettore dei punti dove calcolare il poli interpolante
+function [ y ] = hermite( xi, fi, f1i, x )
+%[ y ] = HERMITE( xi, fi, f1i, x ) 
+% calculates the Hermite polinomial that interpolate f in xi
+%   xi: interpolation nodes vector
+%   fi: function values vector
+%   f1i: first derivative of function vector
+%   x: vector of points which are to be evaluated
     
-    n = length(xi) -1; % grado del polinomio interpolante
-    
-    % check that arrays are same size
-    
+    n = length(xi) -1; 
+   
+   
     fh = zeros(1, 2*n+2); %one by one merge of fi and f1i
     xh = zeros(1, 2*n+2); %double the abscisssas
     for i = 2 : 2 : 2*n+2
@@ -27,7 +27,7 @@ function [y] = hermite( xi, fi, f1i, x )
     end
 end
 
-function [hfd] = hermite_finite_differences( xi, fi, n )
+function [ hfd ] = hermite_finite_differences( xi, fi, n )
 
     for i= (2*n+1): -2 : 3
         fi(i) = ( fi(i) - fi(i-2) ) / ( xi(i) - xi(i-2) );
