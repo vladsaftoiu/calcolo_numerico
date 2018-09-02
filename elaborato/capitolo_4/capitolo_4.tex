@@ -51,17 +51,17 @@ La function Matlab che implementa il polinomio interpolante di Hermite è:
 \lstinputlisting{./capitolo_4/hermite.m}
 
 
-
+	\pagebreak
 	\subsection {Esercizio 4.4}
 Utilizzare le functions degli esercizi precedenti per disegnare l'approssimazione della funzione $sin(x)$  nell'intervallo $[0, 2\pi]$, utilizzando le ascisse di interpolazione $x_{i}=i\pi, i=0,1,2$.
-
-Il codice seguente richiama le funzioni definite in precedenza e disegna un grafico con il confronto fra le funzioni $sin(x)$ e i corrispondenti polinomi interpolanti in forma di Newton e di Lagrange.
+\pp
+Il codice seguente richiama le funzioni definite in precedenza e disegna un grafico con le funzioni $sin(x)$ ed i polinomi interpolanti.
 \lstinputlisting{./capitolo_4/sin_interpolation.m}
-Il risultato è stato riportato in figura \ref{sin_interpolation}. \textbf{ verificare perché bisogna usare ascisse $0\pi, 1\pi, 2\pi$ }.
+Il risultato è stato riportato in figura \ref{sin_interpolation}.
 
-\begin{figure}\label{sin_interpolation}
+\begin{figure}[h]\label{sin_interpolation}
     \centering
-    \includegraphics{./capitolo_4/sin_interpolation}
+    \includegraphics[scale=0.8]{./capitolo_4/sin_interpolation}
     \caption{Interpolazione usando forma di Lagrange e di Newton}
 \end{figure} 
 

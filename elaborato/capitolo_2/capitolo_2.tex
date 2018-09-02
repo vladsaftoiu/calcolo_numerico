@@ -18,11 +18,11 @@ Considerato che il primo punto intermedio è $x=3/2$ si ha $P(3/2)P(3)<0$; il me
 
 Usando il seguente algoritmo per il metodo di bisezione:
 \lstinputlisting{./capitolo_2/bisection.m}
-si osserva che le valutazioni le valutazioni di funzione sono sempre $2+i$, ovvero le due iniziali più una ad ogni iterazione. La tabella sarà quindi:
+si osserva che le valutazioni di funzione sono sempre $2+i$, ovvero le due iniziali più una ad ogni iterazione. La tabella sarà quindi:
 
-\begin{tabular}{ c | c | c }
-
-$tolx$ & imax & feval \\
+\begin{tabular}{ | c | c | c | }
+\hline
+\textbf{tolx} & \textbf{imax} & \textbf{feval} \\
 \hline
 $10^{-1}$ & 5 & 7 \\
 $10^{-2}$ & 9 & 11 \\
@@ -33,7 +33,7 @@ $10^{-6}$ & 22 & 24 \\
 $10^{-8}$ & 29 & 31 \\
 $10^{-9}$ & 32 & 34 \\
 $10^{-10}$ & 35 & 37 \\
-
+\hline
 \end{tabular}
 
 
@@ -43,46 +43,51 @@ Completare la tabella precedente riportando anche il numero di iterazioni e di v
 
 Non è possibile utilizzare il punto di innesco $x_0 = 5/3$ in quanto si ha che $P'(x_0) = 0$ e questo renderebbe non definita la frazione $\frac{f(x)}{f'(x)}$ utilizzata in tutti i metodi iterativi dell'esercizio.
 
-Utilizzando le seguenti funzioni Matlab che implementano i metodi di Newton, corde e secanti:
+Utilizzando le seguenti funzioni Matlab che implementano rispettivamente il metodo di Newton: e secanti:
 \lstinputlisting{./capitolo_2/newton.m}
+il metodo delle corde:
+\lstinputlisting{./capitolo_2/corde.m}
+il metodo delle secanti:
 \lstinputlisting{./capitolo_2/secanti.m}
 si ottengono i risultati  (concatenati alla tabella relativa al metodo di bisezione dell Esercizio 2.1):
-\begin{tabular}{ c | c | c | c | c | c | c | c | c }
-
-\multirow{2}{*}{$tolx$} & \multicolumn{2}{c}{bisection} & \multicolumn{2}{c}{newton} & \multicolumn{2}{c}{secanti} & \multicolumn{2}{c}{corde} \\
-\cline{2-9}
- & imax & feval & it & feval & it & feval & it & feval\\
-\hline
-$10^{-1}$ & 5 & 7 		& 4 & 8   & 3 &  5 & 3   & 4  \\
-$10^{-2}$ & 9 & 11 	&   5 & 10  & 5 &  7 & 12  & 13 \\
-$10^{-3}$ & 12 & 14 	& 6 & 12  & 6 &  8 & 27  & 28 \\
-$10^{-4}$ & 15 & 17 	& 6 & 12  & 7 &  9 & 44  & 45 \\
-$10^{-5}$ & 19 & 21 	& 7 & 14  & 8 & 10 & 62  & 63 \\
-$10^{-6}$ & 22 & 24 	& 7 & 14  & 8 & 10 & 79  & 80 \\
-$10^{-7}$ & 25 & 27   &  7 & 14  & 8 & 10 & 96  & 97 \\
-$10^{-8}$ & 29 & 31 	& 7 & 14  & 9 & 11 & 113 & 114\\
-$10^{-9}$ & 32 & 34 	& 8 & 16  & 9 & 11 & 131 & 132\\
-$10^{-10}$ & 35 & 37	& 8 & 16  & 9 & 11 & 148 & 149\\
+\begin{tabular}{ | c | c | c | c | c | c | c | c | c | }
+	\hline
+	\multirow{2}{*}{\textbf{tolx}} & \multicolumn{2}{ c | }{\textbf{bisection}} & \multicolumn{2}{ c | }{\textbf{newton}} & \multicolumn{2}{ c |}{\textbf{secanti}} & \multicolumn{2}{c |}{\textbf{corde}} \\
+	\cline{2-9}
+	 & imax & feval & it & feval & it & feval & it & feval\\
+	\hline
+	$10^{-1}$ & 5 & 7 		& 4 & 8   & 3 &  5 & 3   & 4  \\
+	$10^{-2}$ & 9 & 11 	&   5 & 10  & 5 &  7 & 12  & 13 \\
+	$10^{-3}$ & 12 & 14 	& 6 & 12  & 6 &  8 & 27  & 28 \\
+	$10^{-4}$ & 15 & 17 	& 6 & 12  & 7 &  9 & 44  & 45 \\
+	$10^{-5}$ & 19 & 21 	& 7 & 14  & 8 & 10 & 62  & 63 \\
+	$10^{-6}$ & 22 & 24 	& 7 & 14  & 8 & 10 & 79  & 80 \\
+	$10^{-7}$ & 25 & 27   &  7 & 14  & 8 & 10 & 96  & 97 \\
+	$10^{-8}$ & 29 & 31 	& 7 & 14  & 9 & 11 & 113 & 114\\
+	$10^{-9}$ & 32 & 34 	& 8 & 16  & 9 & 11 & 131 & 132\\
+	$10^{-10}$ & 35 & 37	& 8 & 16  & 9 & 11 & 148 & 149\\
+	\hline
 \end{tabular}
 
 Dalla tabella si evince che la convergenza del metodo delle corde e di bisezione è molto più lenta rispetto alla convergenza che si ha per i metodi di Newton e delle secanti.
 Per radici semplici infatti il metodo di Newton ha convergenza quadratica ($p=2$) mentre quello delle secanti all'incirca $p\approx1.6$. 
 Inoltre si evidenzia il costo di due valutazioni di funzione per ogni iterazione del metodo di Newton, che ne aumenta il costo in caso di radici con molteplicità $m > 1$ dato che allo stesso tempo la convergenza diventa lineare.
 
+
 	\subsection{Esercizio 2.3}
 
 Costruire una seconda tabella analoga alla precedente relativa ai metodi di Newton, di Newton modificato e di accelerazione di Aitken applicati alla funzione polinomiale P a partire dal punto di innesco $x_0 = 0$. Commentare i risultati riportati in tabella.
 
 \par
-Partendo da $x0=0$ si spingono i metodi iterativi ad avvicinarsi alla radice $x1=1$ che ha molteplicità pari a 2. In questo caso si ha che il metodo di newton classico ha convergenza solo lineare ma, dato che la molteplicità è conosciuta, è possibile utilizzare la versione modificata che ripristina la convergenza quadratica.
+Partendo da $x_0=0$ si spingono i metodi iterativi ad avvicinarsi alla radice $x_1=1$ che ha molteplicità pari a 2. In questo caso si ha che il metodo di newton classico ha convergenza solo lineare ma, dato che la molteplicità è conosciuta, è possibile utilizzare la versione modificata che ripristina la convergenza quadratica.
 La tabella seguente mostra il numero di iterazioni e di valutazione di funzione che vengono fatti da ciascun metodo:
 
-\begin{tabular}{ c | c | c | c | c | c | c }
-
-\multirow{2}{*}{$tolx$} & \multicolumn{2}{c}{newton} & \multicolumn{2}{c}{newton mod} & \multicolumn{2}{c}{aitken} \\
+\begin{tabular}{  | c | c | c | c | c | c | c | }
+	\hline
+	\multirow{2}{*}{\textbf{tolx}} & \multicolumn{2}{ c | }{\textbf{newton}} & \multicolumn{2}{ c | }{\textbf{newton mod}} & \multicolumn{2}{ c |}{\textbf{aitken}} \\
 \cline{2-7}
 				 & it & feval & it & feval & it & feval \\
-\hline
+	\hline
        0.1     &  3 &  8     & 2 &  6     & 2 &  8 \\
       0.01     &  7 & 16     & 3 &  8     & 3 & 12 \\
      0.001     & 10 & 22     & 4 & 10     & 4 & 16 \\
@@ -93,16 +98,18 @@ La tabella seguente mostra il numero di iterazioni e di valutazione di funzione 
      1e-08     & 28 & 58     & 5 & 12     & 5 & 20 \\
      1e-09     & 28 & 58     & 5 & 12     & 5 & 20 \\
      1e-10     & 28 & 58     & 5 & 12     & 5 & 20 \\
-
+	\hline
 \end{tabular}
 
-\textbf{Script} usato per generare la tabella:
+Lo script usato per generare la tabella è il seguente:
 \lstinputlisting{./capitolo_2/esercizio_2_3.m}
 
-Metodo di \textbf{aitken}:
+Metodo di \lstinline{aitken}:
 \lstinputlisting{./capitolo_2/aitken.m}
 
-Metodo di \textbf{newton modificato}: è stato modificato il core stesso del metodo di newton, aggiungendo un parametro opzionale $m$ che viene valorizzato a $1$ di default (metodo di newton normale).
+Metodo di \lstinline{newton modificato}: è stato modificato il core stesso del metodo di newton, aggiungendo un parametro opzionale $m$ che viene valorizzato a $1$ di default (che equivale al metodo di newton normale).
+
+
 
 	\subsection{Esercizio 2.4}
 
@@ -132,7 +139,6 @@ che richiama la funzione:
 \lstinputlisting{./capitolo_2/newton_sqrt.m}
 
 i risultati che si ottengono sono:
-\begin{table}[]
 \begin{tabular}{|r|r|}
 \hline
 \rowcolor[HTML]{303498} 
@@ -145,7 +151,8 @@ i risultati che si ottengono sono:
 2.23606797749979                                                                & 0                                                                                   \\ \hline
 2.23606797749979                                                                & 0                                                                                   \\ \hline
 \end{tabular}
-\end{table}
+
+
 
 	\subsection{Esercizio 2.5}
 
@@ -179,7 +186,6 @@ che richiama la funzione:
 \lstinputlisting{./capitolo_2/secanti_sqrt.m}
 
 i risultati che si ottengono sono:
-\begin{table}[]
 \begin{tabular}{|r|r|}
 \hline
 \rowcolor[HTML]{303498} 
@@ -196,6 +202,5 @@ i risultati che si ottengono sono:
 2.23606797749979                                                                & 0                                                                                   \\ \hline
 2.23606797749979                                                                & 0                                                                                   \\ \hline
 \end{tabular}
-\end{table}
 
 Si verifica subito che il metodo delle secanti converge più lentamente rispetto al calcolo della stessa radice usando il metodo di newton, questo perché il metodo di newton ha convergenza quadratica mentre il metodo delle secanti leggermente inferiore ($\approx 1.6$).

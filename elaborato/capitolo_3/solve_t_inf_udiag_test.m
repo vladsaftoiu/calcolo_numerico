@@ -5,6 +5,7 @@ b = [ 4,-5,-38,77,-40 ]';
 % find and display solution
 x = solve_t_inf_udiag( A, b )
 
-% test solution against the sistem
+% test solution against the sistem, both should be 0
 A*x - b
 
+x - A\b

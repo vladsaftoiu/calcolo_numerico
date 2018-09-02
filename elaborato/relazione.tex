@@ -59,6 +59,10 @@
 		\end{equation*}
 	}
 
+	\newcommand{\pp}[1][]{
+		\ifthenelse{ \isempty{#1} }{ \\[10pt] }{ \\[#1pt] }
+	}
+
 	\pagenumbering{gobble}
 	\maketitle
 	\newpage
