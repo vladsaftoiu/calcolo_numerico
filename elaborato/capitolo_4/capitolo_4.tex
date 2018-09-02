@@ -166,11 +166,15 @@ Utilizzare le function degli Esercizi 4.1 e 4.6 per graficare l'approssimazione 
 \PP
 Lo script:
 \lstinputlisting{./capitolo_4/exercise_4_7.m}
-esegue la function \lstinline{lagrange} con il risultato della function \lstinline{chebyshev_abscissas}, il risultato è il seguente:
-\TODO[inserire grafico esportato]
-L'errore, in relazione al grado $n$ del polinomio, è quantificabile in $\norm{e} <= \frac{\norm{f^{n+1}}}{(n+1)!2^n}$.
-
-\begin{tabular}{ c | r }
+esegue la function \lstinline{lagrange} con il risultato della function \lstinline{chebyshev_abscissas}, il risultato è stato riportato in figura \ref{4_7_lagrange_interpolation}.\\
+\begin{figure}[h!]\label{4_7_lagrange_interpolation}
+    \centering
+    \includegraphics[scale=0.5]{./capitolo_4/exercise_4_7}
+    \caption{Interpolazione usando il polinomio in forma di Lagrange per funzione di Runge}
+\end{figure}
+\PP
+L'errore, in relazione al grado $n$ del polinomio, è quantificabile in $\norm{e} <= \frac{\norm{f^{n+1}}}{(n+1)!2^n}$:
+\begin{tabular}{ | c | r }
 \textbf{n} & \multicolumn{1}{c}{$\mathbf{\norm{e}}$} \\
 \hline
 2  &   0.18557  \\
@@ -178,16 +182,28 @@ L'errore, in relazione al grado $n$ del polinomio, è quantificabile in $\norm{e
 6  &  0.013356  \\
 8  & 0.0029532  \\
 10 & 0.00053885 \\
+\end{tabular}
+\begin{tabular}{ | c | r }
+\textbf{n} & \multicolumn{1}{c}{$\mathbf{\norm{e}}$} \\
+\hline
 12 & 7.0571e-05 \\
 14 & 3.6605e-06 \\
 16 & 4.2884e-06 \\
 18 &   1.86e-06 \\
 20 & 5.7764e-07 \\
+\end{tabular}
+\begin{tabular}{ | c | r }
+\textbf{n} & \multicolumn{1}{c}{$\mathbf{\norm{e}}$} \\
+\hline
 22 & 1.4887e-07 \\
 24 & 3.2687e-08 \\
 26 & 5.9039e-09 \\
 28 & 7.3124e-10 \\
 30 & 3.2957e-11 \\
+\end{tabular}
+\begin{tabular}{ | c | r }
+\textbf{n} & \multicolumn{1}{c}{$\mathbf{\norm{e}}$} \\
+\hline
 32 & 4.9639e-11 \\
 34 & 2.1068e-11 \\
 36 & 6.4812e-12 \\
@@ -201,30 +217,42 @@ L'errore, in relazione al grado $n$ del polinomio, è quantificabile in $\norm{e
 	
 Relativamente al precedente esercizio, stimare numericamente, la crescita della costante di Lebesgue.
 \PP
-Considerando che la costante di Lebesgue nel caso delle ascisse di Chebyshev è $\Lambda_n \approx \frac{2}{\pi}\log{n} $ si ha la seguente tabella relativa agli $n=2,4,6 ... 40$:
-\begin{tabular}{ c | r | r }
-\textbf{n} & \multicolumn{1}{c}{$\mathbf{\Lambda_n}$} & \multicolumn{1}{c}{\textbf{growth}}\\
+Considerando che la costante di Lebesgue nel caso delle ascisse di Chebyshev è $\Lambda_n \approx \frac{2}{\pi}\log{n} $ si ha la seguente tabella relativa agli $n=2,4,6 ... 40$:\\
+\begin{tabular}{ | c | r | r }
+\textbf{n} & \multicolumn{1}{c}{$\mathbf{\Lambda_n}$} & \multicolumn{1}{c}{\textbf{\%}}\\
 \hline
       2   &  0.44127  &     100  \\
       4   &  0.88254  &     100  \\
-      6   &   1.1407  &  29.248  \\
-      8   &   1.3238  &  16.056  \\
-     10   &   1.4659  &  10.731  \\
-     12   &   1.5819  &  7.9181  \\
-     14   &   1.6801  &  6.2035  \\
-     16   &   1.7651  &  5.0598  \\
-     18   &   1.8401  &  4.2481  \\
-     20   &   1.9071  &  3.6452  \\
-     22   &   1.9678  &  3.1815  \\
-     24   &   2.0232  &   2.815  \\
-     26   &   2.0742  &  2.5186  \\
-     28   &   2.1213  &  2.2746  \\
-     30   &   2.1653  &  2.0705  \\
-     32   &   2.2064  &  1.8975  \\
-     34   &    2.245  &  1.7493  \\
-     36   &   2.2813  &  1.6209  \\
-     38   &   2.3158  &  1.5088  \\
-     40   &   2.3484  &  1.4101  \\
+      6   &   1.1407  &  29.2  \\
+      8   &   1.3238  &  16.0  \\
+     10   &   1.4659  &  10.7  \\
+\end{tabular}
+\begin{tabular}{ | c | r | r }
+\textbf{n} & \multicolumn{1}{c}{$\mathbf{\Lambda_n}$} & \multicolumn{1}{c}{\textbf{\%}}\\
+\hline
+     12   &   1.5819  &  7.9  \\
+     14   &   1.6801  &  6.2  \\
+     16   &   1.7651  &  5.0  \\
+     18   &   1.8401  &  4.2  \\
+     20   &   1.9071  &  3.6  \\
+\end{tabular}
+\begin{tabular}{ | c | r | r }
+\textbf{n} & \multicolumn{1}{c}{$\mathbf{\Lambda_n}$} & \multicolumn{1}{c}{\textbf{\%}}\\
+\hline
+     22   &   1.9678  &  3.1  \\
+     24   &   2.0232  &   2.8  \\
+     26   &   2.0742  &  2.5  \\
+     28   &   2.1213  &  2.3  \\
+     30   &   2.1653  &  2.1  \\
+\end{tabular}
+\begin{tabular}{ | c | r | r }
+\textbf{n} & \multicolumn{1}{c}{$\mathbf{\Lambda_n}$} & \multicolumn{1}{c}{\textbf{\%}}\\
+\hline
+     32   &   2.2064  &  1.9  \\
+     34   &    2.245  &  1.7  \\
+     36   &   2.2813  &  1.6  \\
+     38   &   2.3158  &  1.5  \\
+     40   &   2.3484  &  1.4  \\
 \end{tabular}
 
 
