@@ -12,3 +12,6 @@ for i = 1 : 46
 end
 
 plot( [ 100:20:1000 ]', iterations )
+xlabel('n = matrix dimension');
+ylabel('iterations');
+title('number of iterations for Jacobi method')

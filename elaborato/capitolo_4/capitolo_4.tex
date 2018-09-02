@@ -148,7 +148,8 @@ mentre per la spline \textit{not-a-knot}:
 	\end{smallmatrix}
 \]
 
-
+questo porta al seguente codice per calcolare la spline:
+\lstinputlisting{./capitolo_4/my_spline/spline3.m}
 
 
 	\subsection {Esercizio 4.6}
@@ -170,7 +171,7 @@ esegue la function \lstinline{lagrange} con il risultato della function \lstinli
 \begin{figure}[h!]\label{4_7_lagrange_interpolation}
     \centering
     \includegraphics[scale=0.5]{./capitolo_4/exercise_4_7}
-    \caption{Interpolazione usando il polinomio in forma di Lagrange per funzione di Runge}
+    \caption{Interpolazione con ascisse di Chebyshev usando il polinomio in forma di Lagrange per funzione di Runge}
 \end{figure}
 \PP
 L'errore, in relazione al grado $n$ del polinomio, è quantificabile in $\norm{e} <= \frac{\norm{f^{n+1}}}{(n+1)!2^n}$:
@@ -263,12 +264,23 @@ Utilizzare la function dell'esercizio 4.1 per approssimare la funzione di Runge 
 \PP
 Lo script che usa e graficizza il risultato della function \lstinline{lagrange} è il seguente:
 \lstinputlisting{./capitolo_4/exercise_4_9.m}
-il valore $n$ è stato ristretto a $n=12$ perché oltre la funzione interpolante assume valori elevatissimi in corrispondenza degli estremi ed il grafico non avrebbe nessuna valenza informativa. Già con $n=12$ si verifica che verso gli estremi la funzione assume valori estremamente elevati e questo è dovuto alla crescita estremamente rapida della costante di Lebesgue. Usando infatti questo script:
+il valore $n$ è stato ristretto a $n=12$ perché oltre la funzione interpolante assume valori elevatissimi in corrispondenza degli estremi ed il grafico non avrebbe nessuna valenza informativa. Già con $n=12$ si verifica che verso gli estremi la funzione assume valori molto elevati e questo è dovuto alla crescita rapida della costante di Lebesgue. 
+Il grafico è stato riportato in figura \ref{4_9_lagrange_interpolation}.\\
+\begin{figure}[h!]\label{4_9_lagrange_interpolation}
+    \centering
+    \includegraphics[scale=0.5]{./capitolo_4/exercise_4_9}
+    \caption{Interpolazione con ascisse equidistanti usando il polinomio in forma di Lagrange per funzione di Runge}
+\end{figure}
+Usando questo script:
 \lstinputlisting{./capitolo_4/exercise_4_9_lebesgue.m}
-anch'esso ristretto a $n=12$ per quanto riguarda il grafico, si verifica che la costante aumenta molto rapidamente all'aumentare di $n$. La tabella riporta questa crescita in maniera più dettagliata:
-
-
-\TODO[inserire i grafici e tabella]
+anch'esso ristretto a $n=12$ si osserva che la costante aumenta molto rapidamente verso gli estremi all'aumentare di $n$.
+Il risultato grafico è riportato in figura \ref{fig:4_9_lebesgue}.\\
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.7]{./capitolo_4/exercise_4_9_lebesgue}
+    \label{fig:4_9_lebesgue}
+    \caption{Valori della funzione di Lebesgue per n= 2,4,6,...,12}
+\end{figure}
 
 
 

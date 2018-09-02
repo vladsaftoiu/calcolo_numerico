@@ -12,9 +12,9 @@ for n = 2 : 2 : 12
 
 end
 
-xlabel('points');
+xlabel('x');
 ylabel('Lebesgue function');
-title('lebesgue constant for n=2,4,6,8,10,12')
+title('lebesgue function for n=2,4,6,8,10,12')
 legend(string(2 : 2 : 12))
 
 exercise_ns = 2 : 2 :40;

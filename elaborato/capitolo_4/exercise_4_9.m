@@ -19,3 +19,8 @@ for n = 2 : 2 : 12
     plot( xs, y )
     
 end
+
+legend(string(2 : 2 : 12)')
+xlabel('x');
+ylabel('lagrange interpolation poly');
+title('lagrange interpolation of Runge''s function for n=2,4,6,8,10,12')

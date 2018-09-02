@@ -77,8 +77,13 @@ La function che implementa il metodo di Jacobi è la seguente:
 \lstinputlisting{./capitolo_6/jacobi.m}
 lo script che la utilizza sugli $n = 100, 120, 140 ... 1000$ è:
 \lstinputlisting{./capitolo_6/exercise_6_3.m}
-che porta il seguente risultato:
-\TODO[inserire grafico]
+che porta il seguente risultato, rappresentato in figura \ref{fig:6_3_jacobi}.\\
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.6]{./capitolo_6/exercise_6_3}
+    \label{fig:6_3_jacobi}
+    \caption{Numero di iterazioni del metodo di Jacobi necessarie per risolvere il sistema per n=100,120...1000}
+\end{figure}
 
 
 
@@ -90,8 +95,13 @@ La function che implementa il metodo di Gauss-Seidel è la seguente:
 \lstinputlisting{./capitolo_6/gauss_seidel.m}
 lo script che la utilizza sugli $n = 100, 120, 140 ... 1000$ è:
 \lstinputlisting{./capitolo_6/exercise_6_4.m}
-che porta il seguente risultato:
-\TODO[inserire grafico]
+che porta il seguente risultato, rappresentato in figura \ref{fig:6_4_gauss}.\\
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.6]{./capitolo_6/exercise_6_4}
+    \label{fig:6_4_gauss}
+    \caption{Numero di iterazioni del metodo di Gauss-Seidel necessarie per risolvere il sistema per n=100,120...1000}
+\end{figure}
 
 
 
@@ -101,8 +111,30 @@ Con riferimento al sistema lineare
 \begin{equation*}
 	A_n \mathbf{x} = \begin{pmatrix} 1 \\ \vdots \\ 1 \end{pmatrix}
 \end{equation*}
-con $n = 1000$, graficare la norma dei residui, rispetto all’indice di iterazione, gererati dai metodi di Jacobi e GaussSeidel.
+con $n = 1000$, graficare la norma dei residui, rispetto all’indice di iterazione, generati dai metodi di Jacobi e GaussSeidel.
 Utilizzare il formato \lstinline{semilogy} per realizzare il grafico, corredandolo di opportune \textit{labels}.
 \PP
 Lo script che utilizza le functions di Jacobi e Gauss-Seidel e ne stampa su un grafico la norma dei residui ad ogni iterazione è il seguente:
 \lstinputlisting{./capitolo_6/exercise_6_5.m}
+Viene utilizzata una versione leggermente modificata dei due metodi, di cui cambia solo la firma ed il meccanismo interno (con cui ad ogni iterazione, oltre ai calcoli, si memorizza in un vettore $\norm{r}_i$):
+\begin{lstlisting}[frame=single]
+function [ nrs ] = nrs_gauss_seidel( A, b, tol )
+%...
+
+function [ nrs ] = nrs_jacobi( A, b, tol )
+%...
+\end{lstlisting}
+
+La $\norm{r}$ per iterazione per i due metodi sono rappresentati nelle figure seguenti:
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.8]{./capitolo_6/exercise_6_5_jacobi}
+    \label{fig:6_5_jacobi}
+    \caption{$\norm{r}$ per iterazione del metodo di Jacobi}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.8]{./capitolo_6/exercise_6_5_gauss}
+    \label{fig:6_5_gauss}
+    \caption{$\norm{r}$ per iterazione del metodo di Gauss-Seidel}
+\end{figure}
