@@ -1,6 +1,6 @@
 function [] = sin_interpolation( )
     ab = linspace(0, 2*pi, 50);
-    %xi = pi*[0, 1, 2];   richiesto ma non efficace?
+    %xi = pi*[0, 1, 2];   richiesto ma non funge?
     xi = linspace(0, 2*pi, 4);
     
     plot(sin(ab), '.k'); %black

@@ -1,5 +1,10 @@
 function [ A, p ] = LU_pivoting( A )
-    
+% [ A, p ] = LU_pivoting( A )
+% performs, if possible, a A = L x U factorization of A usign the pivoting
+% technique. A is rewritten with the significative part of L and the U part
+% in output we return also vector p of permutations
+%   A: input matrix
+
     n = length(A);
     p = [1:n];
     

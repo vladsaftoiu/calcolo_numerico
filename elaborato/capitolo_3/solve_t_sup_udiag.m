@@ -1,5 +1,6 @@
-function [ x ]  = solve_t_sup_udiag( A, b )
-%SOLVE_T_SUP_UDIAG returns x that solves the sistem Ax=b given that:
+function [ x ] = solve_t_sup_udiag( A, b )
+%[ X ] = SOLVE_T_SUP_UDIAG( A, b ) returns x that solves the 
+% sistem Ax=b given that:
 %  A is a square matrix upper triangular with its diagonal set to 1
 %  b is the vector of initial equality values
 

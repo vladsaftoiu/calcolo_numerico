@@ -1,5 +1,6 @@
-function [ x ]  = solve_t_sup( A, b )
-%SOLVE_T_SUP returns x that solves the sistem Ax=b given that:
+function [ x ] = solve_t_sup( A, b )
+%[ X ] = SOLVE_T_SUP( A, b ) returns x that solves the 
+% sistem Ax=b given that:
 %  A is a square matrix upper triangular
 %  b is the vector of initial equality values
 

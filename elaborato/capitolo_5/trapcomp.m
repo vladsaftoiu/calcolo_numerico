@@ -1,13 +1,14 @@
-function [If] = trapcomp( n, a, b, fun )
-%TRAPCOMP( n, a, b, fun ) 
-% calcola l'integrale tra a e b della function fun passata come parametro
-% usando il metodo dei trapezi
-%   n: numero di intervalli equidistanti della partizione
-%   a: estremo destro intervallo 
-%   b: estremo sinistro intervallo
-%   fun: funzione di cui approssimare l'integrale
+function [ If ] = trapcomp( n, a, b, fun )
+%[ If ] = TRAPCOMP( n, a, b, fun ) 
+% calculates the integral between a and b for the function f;
+% trapezoidal method is used
+%   n: number of sub intervals for the partition
+%   a: right-hand interval boundary 
+%   b: left-hand interval boundary
+%   fun: function whose integral is to be calculated
+%   tol: tolerance used for break condition
 
-    x = linspace(a,b,n+1); %vettore delle ascisse equidistanti
+    x = linspace(a,b,n+1); 
     f = feval(fun, x);
     
     If = (b-a)/n * (sum(f) -0.5*(f(1)+f(end)));

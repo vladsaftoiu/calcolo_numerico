@@ -1,7 +1,7 @@
 function [ x ]  = solve_t_inf( A, b )
-%SOLVE_T_INF returns x that solves the sistem Ax=b given that:
-%  A is a square matrix lower triangular
-%  b is the vector of initial equality values
+%[ X ]  = SOLVE_T_INF( A, b ) returns x that solves the sistem Ax=b given that:
+%  A: is a square matrix lower triangular
+%  b: is the vector of initial equality values
 
     if (~istril(A)), error('A is not lower triangular'), end
     

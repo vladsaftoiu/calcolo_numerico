@@ -1,8 +1,9 @@
-function [ x ]  = solve_with_lu_pivoting( A, b )
-%SOLVE_WITH_LU_PIVOTING returns x that solves the sistem Ax=b given that:
-%  A is a square matrix with det(A) ~= 0
-%  b is the vector of initial equality values
-%  the function will use LU factorization of A to solve the sistem 
+function [ x ] = solve_with_lu_pivoting( A, b )
+%[ X ] = SOLVE_WITH_LU_PIVOTING( A, b ) returns x that solves the 
+% sistem Ax=b given that:
+%   A: is a square matrix with det(A) ~= 0
+%   b: is the vector of initial equality values
+%   the function will use LU factorization of A to solve the sistem 
 
     n = size(A);
     [lu, p] = LU_pivoting(A);

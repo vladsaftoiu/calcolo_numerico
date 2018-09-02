@@ -1,7 +1,8 @@
 function [ A ] = LU( A )
-%LU determina, se possibile, la fattorizzazione LU della matrice A in
-%ingresso
-%   A: matrice da fattorizzare
+% [ A ] = LU( A )
+% performs, if possible, a A = L x U factorization of A. A is rewritten 
+% with the significative part of L and the U part
+%   A: input matrix
 
     n = length(A); % dimensione matrice
    

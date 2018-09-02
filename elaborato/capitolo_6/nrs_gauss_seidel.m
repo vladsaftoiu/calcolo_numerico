@@ -26,7 +26,7 @@ function [ u ] = m_solve( M, r )
     for i = 1 : n
     
         u(i) = u(i) / M(i,i);
-        u(i+1 : n) = u(i+1 : n) + M(i+1 : n, i) * u(i);
+        u(i+1 : n) = u(i+1 : n) - M(i+1 : n, i) * u(i);
     
     end
     

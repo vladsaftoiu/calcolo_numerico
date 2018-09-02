@@ -1,6 +1,7 @@
 function [ x, k ] = newton_nonlinear( F, x0, itmax, tol )
-% [ x ] = NEWTON_NONLINEAR ( F, x0, itmax, tol )  uses iterative linear
+% [ X, K ] = NEWTON_NONLINEAR ( F, x0, itmax, tol )  uses iterative linear
 % solving to obtain the solution to a non-linear system in te form F(y) = 0
+% we also return K as the number of iterations required to find X
 %   F:  array of expressions for f(x1, x2, ...)
 %   x0:  starting point
 %   itmax:  maximum iterations allowed

@@ -1,11 +1,12 @@
 function [ I, fevals ] = simpad( fun, a, b, tol, fa, fb, fc, fevals )
-%TRAPAD( fun, a, b, tol ) 
-% calcola l'integrale tra a e b della function fun passata come parametro
-% usando il metodo di Simpson adattivo
-%   a: estremo destro intervallo 
-%   b: estremo sinistro intervallo
-%   fun: funzione di cui approssimare l'integrale
-%   tol: tolleranza per il criterio di arresto
+%[ I, fevals ] = SIMPAD( fun, a, b, tol ) 
+% calculates the integral between a and b for the function f;
+% Simpson's adaptive method is used, also the number of function
+% evaluations is returned
+%   a: right-hand interval boundary 
+%   b: left-hand interval boundary
+%   fun: function whose integral is to be calculated
+%   tol: tolerance used for break condition
 
     c = ( a + b ) / 2;
     

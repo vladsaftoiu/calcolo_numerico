@@ -1,5 +1,13 @@
 function [ x, evals ] = aitken( x0, f, f1, tolx, itmax )
-    
+% [ X, EVALS ] = aitken( x0, f, f1, tolx, itmax )
+% implements Aitken's method for root search, X is the found root, EVALS is
+% the number of iterations that was required to find X 
+%   x0: starting point
+%   f: function which roots we are looking for
+%   f1: first derivative of f
+%   tolx: tolerance applied to break condition
+%   itmax: maximum number of iterations allowed
+
     x = x0;
     i = 0;
     proceed = true;

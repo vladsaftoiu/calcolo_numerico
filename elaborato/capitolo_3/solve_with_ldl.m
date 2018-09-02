@@ -1,7 +1,8 @@
-function [ x ]  = solve_with_ldl( A, b )
-%SOLVE_WITH_LDL returns x that solves the sistem Ax=b given that:
-%  A is a symmetric positive definite square matrix
-%  b is the vector of initial equality values
+function [ x ] = solve_with_ldl( A, b )
+%[ X ] = SOLVE_WITH_LDL( A, b ) returns x that solves the 
+% sistem Ax=b given that:
+%  A: is a symmetric positive definite square matrix
+%  b: is the vector of initial equality values
 %  the function will use LDL' factorization of A to solve the sistem 
 
     n = size(A);

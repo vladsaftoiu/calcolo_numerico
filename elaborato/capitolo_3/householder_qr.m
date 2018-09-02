@@ -1,4 +1,8 @@
 function [ A ] = householder_qr( A )
+% [ A ] = householder_qr( A ) 
+% performs a QR factorization using Householder vectors technique
+% matrix A is rewritten using R~ portion and the significative parts of 
+% Householder vectors
 
     [ m, n ] = size(A);
    

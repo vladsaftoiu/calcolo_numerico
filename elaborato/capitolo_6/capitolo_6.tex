@@ -15,9 +15,9 @@ $
 	\quad \text{con} 
 $, con $a_{ij} =$ 
 \begin{empheq}[left=\empheqlbrace]{align*}
-	4,  & \text{se} & i = j \\
-	-1, & \text{se} & i = j  \\
-	-1, & \text{se} & i = j 
+	4,  &  \quad \text{se} \quad i = j \\
+	-1, &  \quad \text{se} \quad i = j \pm 1 \\
+	-1, &  \quad \text{se} \quad i = j \pm 10 
 \end{empheq}
 Utilizzare, a questo fine, la function Matlab \lstinline{spdiags}.
 \PP
@@ -45,21 +45,27 @@ Il metodo delle potenze è implementato dalla seguente function:
 \lstinputlisting{./capitolo_6/power_method.m}
 la tabella viene generata usando lo script:
 \lstinputlisting{./capitolo_6/exercise_6_2.m}
-i risultati sono i seguenti:
+i risultati sono i seguenti:\\
 \begin{tabular}{|c|c|r|}
 	\hline
 	n & iterazioni & stima $\lambda_1 $\\
 	\hline
-     	100  &  31  &  -5.9182  \\
-     	200  &  49  &  -5.9760  \\
-     	300  &  50  &  -5.9865  \\
-     	400  &  44  &  -5.9905  \\
-     	500  &  41  &  -5.9921  \\
-     	600  &  40  &  -5.9928  \\
-     	700  &  36  &  -5.9946  \\
-     	800  &  37  &  -5.9944  \\
-     	900  &  36  &  -5.9949  \\
-    	1000  &  33  &  -5.9954  \\
+     100   &     46   &    -7.9160  \\
+     200   &    103   &     -7.976  \\
+     300   &    150   &    -7.9890  \\
+     400   &    167   &    -7.9932  \\
+     500   &    160   &    -7.9949  \\
+	\hline
+\end{tabular}
+\begin{tabular}{|c|c|r|}
+	\hline
+	n & iterazioni & stima $\lambda_1 $\\
+	\hline
+     600   &    154   &    -7.9960  \\
+     700   &    132   &    -7.9965  \\
+     800   &    123   &    -7.9970  \\
+     900   &    115   &    -7.9975  \\
+    1000   &    123   &    -7.9975  \\
     	\hline
 \end{tabular}
 
