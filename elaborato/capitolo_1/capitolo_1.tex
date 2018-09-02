@@ -82,14 +82,14 @@ Tenendo presente la funzione $fl: \mathrm{I} \rightarrow \mathrm{M}$ definita co
 \begin{equation*}
 	\begin{split}
 		\frac{(x \oplus y) \oplus z - x - y - z}{x+y+z} \\
-			& \leq \frac{x(1+u)^3 + y(1+u)^2 + z(1+u^2) -x -y -z}{x+y+z} \\
-	 		& = \frac{x(3u+3u^2+u^3) + y(3u+3u^2+u^3) + z(2u+u^2)}{x+y+z} \\
+			& \leq \frac{x(1+u)^3 + y(1+u)^3 + z(1+u)^2 -x -y -z}{x+y+z} \\
+			& \tiny{\text{...} \quad x(1+u)^3 - x = x+3ux+3u^2x+u^3x-x = x(3u+3u^2+u^3)} \\
 	 		& \leq \frac{x(3u+3u^2+u^3) + y(3u+3u^2+u^3) + z(2u+u^2)}{x+y+z} \\
 	 		& \leq \frac{7ux+7uy+3uz}{x+y+z} \\
 	 		& = u(3+4 \frac{x+y}{x+y+z})
 	\end{split}
 \end{equation*}
-
+Dato che $x \oplus (y \oplus z) = (y \oplus z) \oplus x$ la maggiorazione ha la stessa formula a meno del numeratore della frazione: $ u(3+4 \frac{y+z}{x+y+z})$.
 
 	\subsection{Esercizio 1.5}
 Eseguire le seguenti istruzioni in Matlab:
