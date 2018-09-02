@@ -25,6 +25,9 @@ end
 
 
 ns = 2:2:40;
+xlabel('points');
+ylabel('lagrange interpolation poly');
+title('lagrange interpolation for n=2,4 ... 40 points');
 legend(string(ns));
 e_data = arrayfun(err_fun, ns);
 
