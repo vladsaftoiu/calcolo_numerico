@@ -3,8 +3,10 @@
 
 
 	\subsection{Esercizio 5.1}
+	
 Scrivere una function Matlab che implementi la formula composita dei trapezi su $n+1$ ascisse equidistanti nell'intervallo $[a, b]$, relativamente alla funzione implementata da \texttt{fun(x)}. 
 La function deve essere del tipo: \texttt{ [If] = trapcomp( n, a, b, fun ) }.
+\PP
 La formula composita dei trapezi è così definita:
 \begin{equation}\label{trapezi_composite_equation}
 	I_1^{(n)} = \frac{b-a}{2n} (f_0 + 2\sum_{i=1}^{n-1}f_i + f_n)
@@ -15,8 +17,10 @@ La function Matlab che implementa la \ref{trapezi_composite_equation} è:
 
 
 	\subsection{Esercizio 5.2}
+	
 Scrivere una function Matlab che implementi la formula composita di Simpson sulle $2n+1$ ascisse equidistanti nell'intervallo $[a, b]$, relativamente alla funzione implementata da \texttt{fun(x)}. 
 La function deve essere del tipo: \texttt{ [If] = simpcomp( n, a, b, fun ) }.
+\PP
 La formula composita di Simpson è così definita:
 \begin{equation}\label{simpson_composite_equation}
 	I_2^{(n)} = \frac{b-a}{3n} (4\sum_{i=1}^{\frac{n}{2}}f_{2i-1} +2\sum_{i=0}^{\frac{n}{2}}f_{2i} - f_0 - f_n)
@@ -27,30 +31,33 @@ La function Matlab che implementa la \ref{simpson_composite_equation} è:
 
 
 	\subsection{Esercizio 5.3}
-	Scrivere una function Matlab che implementi la formula composita dei trapezi adattativa nell’intervallo $\lbrack a,b \rbrack$  relativamente alla funzione implementata da \lstinline{fun(x)}, e con tolleranza \lstinline{tol}. La function deve essere del tipo: \lstinline{If = trapad( a, b, fun, tol )}
 	
-	La function è la seguente:
+	Scrivere una function Matlab che implementi la formula composita dei trapezi adattativa nell’intervallo $\lbrack a,b \rbrack$  relativamente alla funzione implementata da \lstinline{fun(x)}, e con tolleranza \lstinline{tol}. La function deve essere del tipo: \lstinline{If = trapad( a, b, fun, tol )}
+\PP
+La function è la seguente:
 \lstinputlisting{./capitolo_5/trapad.m}
 La function prevede anche la possibilità di calcolare il numero di valutazioni di funzione necesssarie per raggiungere l'integrale della funzione entro una certa tolleranza.
 
 
 
 	\subsection{Esercizio 5.4}
-	Scrivere una function Matlab che implementi la formula composita di Simpson adattativa nell’intervallo $\lbrack a,b \rbrack$  relativamente alla funzione implementata da \lstinline{fun(x)}, e con tolleranza \lstinline{tol}. La function deve essere del tipo: \lstinline{If = simpad( a, b, fun, tol )}
 	
-		La function è la seguente:
+	Scrivere una function Matlab che implementi la formula composita di Simpson adattativa nell’intervallo $\lbrack a,b \rbrack$  relativamente alla funzione implementata da \lstinline{fun(x)}, e con tolleranza \lstinline{tol}. La function deve essere del tipo: \lstinline{If = simpad( a, b, fun, tol )}
+\PP
+La function è la seguente:
 \lstinputlisting{./capitolo_5/simpad.m}
 La function prevede anche la possibilità di calcolare il numero di valutazioni di funzione necesssarie per raggiungere l'integrale della funzione entro una certa tolleranza.
 
 
 
 	\subsection{Esercizio 5.5}
+	
 	Calcolare quante valutazioni di funzione sono necessarie per ottenere una approssimazione di
 \begin{equation*}
 	\mathcal{I}(f) = \int_{0}^{1} e^{-10^6x}dx
 \end{equation*}
 che vale $10^{-6}$, in doppia precisione IEEE, con una tolleranza di $10^{-9}$, utilizzando le functions dei precedenti esercizi. Argomentare quantitativamente la risposta.
-
+\PP
 Utilizzando le functions \lstinline{ trapcomp, simpcomp,  trapad, simpad } precedentemente esposte si verifica, tramite lo script 
 \lstinputlisting{./capitolo_5/integrals_test.m}
  che il numero di valutazioni di funzione sono: 

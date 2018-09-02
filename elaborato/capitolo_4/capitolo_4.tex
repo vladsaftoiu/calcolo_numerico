@@ -3,8 +3,9 @@
 
 
 	\subsection{Esercizio 4.1}
+	
 Scrivere una function Matlab che implementi il calcolo del polinomio interpolante di grado $n$ in forma di Lagrange. La forma della function deve essere del tipo \texttt{ y = lagrange( xi, fi, x ) }.
-
+\PP
 La base di Lagrange è così definita:
 \begin{equation}
 	L_{kn} := \prod_{j=0,j\neq{k}}^n\frac{x-x_j}{x_k-x_j}
@@ -20,8 +21,9 @@ Costi: dati $n$ numero di ascisse di interpolazione e $m$ numero di punti da cal
 
 
 	\subsection {Esercizio 4.2}
+	
 Scrivere una function Matlab che implementi il calcolo del polinomio interpolante di grado $n$ in forma di Newton. La forma della function deve essere del tipo \texttt{ y = newton( xi, fi, x ) }
-
+\PP
 La base di Newton è così definita: 
 \begin{empheq}[left=\empheqlbrace]{align}
 	& \omega_0(x):=1 \\
@@ -39,8 +41,9 @@ La function matlab che implementa \ref{newton_equation} è:
 
 
 	\subsection {Esercizio 4.3}
+	
 Scrivere una function Matlab che implementi il calcolo del polinomio interpolante di Hermite. La forma della function deve essere del tipo \texttt{ y = hermite( xi, fi, f1i, x ) }
-
+\PP
 Il polinomio interpolante di Hermite richiede un numero pari di ascisse distribuite come segue: 
 \begin{equation}
 	a <= x_0 < x_{\frac{1}{2}} < x_{1+\frac{1}{2}} < ... < x_n < x_{n+\frac{1}{2}} <= b
@@ -53,8 +56,9 @@ La function Matlab che implementa il polinomio interpolante di Hermite è:
 
 	\pagebreak
 	\subsection {Esercizio 4.4}
+	
 Utilizzare le functions degli esercizi precedenti per disegnare l'approssimazione della funzione $sin(x)$  nell'intervallo $[0, 2\pi]$, utilizzando le ascisse di interpolazione $x_{i}=i\pi, i=0,1,2$.
-\pp
+\PP
 Il codice seguente richiama le funzioni definite in precedenza e disegna un grafico con le funzioni $sin(x)$ ed i polinomi interpolanti.
 \lstinputlisting{./capitolo_4/sin_interpolation.m}
 Il risultato è stato riportato in figura \ref{sin_interpolation}.
@@ -68,8 +72,9 @@ Il risultato è stato riportato in figura \ref{sin_interpolation}.
 
 
 	\subsection {Esercizio 4.5}
+	
 Scrivere una function Matlab che implementi la \texttt { spline } cubica interpolante (naturale o \textit{not-a-knot}, come specificato in ingresso) delle coppie di dati assegnate. La forma della function deve essere del tipo: \texttt { y = spline3( xi, fi, x, tipo ) }.
-
+\PP
 Formule per il calcolo della spline cubica:
 \begin{equation*}
 	\begin{split}
@@ -147,16 +152,18 @@ mentre per la spline \textit{not-a-knot}:
 
 
 	\subsection {Esercizio 4.6}
+	
 Scrivere una function Matlab che implementi il calcolo delle ascisse di Chebyshev per il polinomio interpolante di grado $n$, su un generico intervallo $[a,b]$. La function deve essere del tipo: \texttt { xi = ceby( n, a, b ) }.
-
+\PP
 La function per le ascisse di Chebyshev è:
 \lstinputlisting{./capitolo_4/chebyshev_abscissas.m}
 
 
 
 	\subsection {Esercizio 4.7}
+	
 Utilizzare le function degli Esercizi 4.1 e 4.6 per graficare l'approssimazione della funzione di Runge sull'intervallo $[-6,6]$ per $n= 2,4, ... ,40$. Stimare, numericamente, l'errore commesso in funzione del grado $n$ del polinomio interpolante.
-
+\PP
 Lo script:
 \lstinputlisting{./capitolo_4/exercise_4_7.m}
 esegue la function \lstinline{lagrange} con il risultato della function \lstinline{chebyshev_abscissas}, il risultato è il seguente:
@@ -188,9 +195,12 @@ L'errore, in relazione al grado $n$ del polinomio, è quantificabile in $\norm{e
 40 & 3.6167e-13
 \end{tabular}
 
-	\subsection {Esercizio 4.8}
-Relativamente al precedente esercizio, stimare numericamente, la crescita della costante di Lebesgue.
 
+
+	\subsection {Esercizio 4.8}
+	
+Relativamente al precedente esercizio, stimare numericamente, la crescita della costante di Lebesgue.
+\PP
 Considerando che la costante di Lebesgue nel caso delle ascisse di Chebyshev è $\Lambda_n \approx \frac{2}{\pi}\log{n} $ si ha la seguente tabella relativa agli $n=2,4,6 ... 40$:
 \begin{tabular}{ c | r | r }
 \textbf{n} & \multicolumn{1}{c}{$\mathbf{\Lambda_n}$} & \multicolumn{1}{c}{\textbf{growth}}\\
@@ -220,8 +230,9 @@ Considerando che la costante di Lebesgue nel caso delle ascisse di Chebyshev è 
 
 
 	\subsection {Esercizio 4.9}
+	
 Utilizzare la function dell'esercizio 4.1 per approssimare la funzione di Runge sull'intervallo $[-6,6]$, su una partizione uniforme di $n+1$ ascisse, $n= 2,4, ... ,40$. Stimare le corrispondenti costanti di Lebesgue.
-
+\PP
 Lo script che usa e graficizza il risultato della function \lstinline{lagrange} è il seguente:
 \lstinputlisting{./capitolo_4/exercise_4_9.m}
 il valore $n$ è stato ristretto a $n=12$ perché oltre la funzione interpolante assume valori elevatissimi in corrispondenza degli estremi ed il grafico non avrebbe nessuna valenza informativa. Già con $n=12$ si verifica che verso gli estremi la funzione assume valori estremamente elevati e questo è dovuto alla crescita estremamente rapida della costante di Lebesgue. Usando infatti questo script:
@@ -232,9 +243,11 @@ anch'esso ristretto a $n=12$ per quanto riguarda il grafico, si verifica che la 
 \TODO[inserire i grafici e tabella]
 
 
-	\subsection {Esercizio 4.10}
-Stimare, nel senso dei minimi quadrati, posizione, velocità iniziale ed accelerazione relative a un moto rettilineao uniformemente accelerato per cui sono note le seguenti misurazioni delle coppie (tempo, spazio): (1, 2.9), (1, 3.1), (2, 6.9), (2, 7.1), (3, 12.9), (3, 13.1), (4, 20.9), (4, 21.1), (5, 30.9), (5, 31.1).
 
+	\subsection {Esercizio 4.10}
+
+Stimare, nel senso dei minimi quadrati, posizione, velocità iniziale ed accelerazione relative a un moto rettilineao uniformemente accelerato per cui sono note le seguenti misurazioni delle coppie (tempo, spazio): (1, 2.9), (1, 3.1), (2, 6.9), (2, 7.1), (3, 12.9), (3, 13.1), (4, 20.9), (4, 21.1), (5, 30.9), (5, 31.1).
+\PP
 La formula del moto uniformemente accelerato è:
 \begin{equation*}
 	x(t) = x_0 + v_0t +\frac{1}/{2}at^2

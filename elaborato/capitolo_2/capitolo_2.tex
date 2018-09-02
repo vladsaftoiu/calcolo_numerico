@@ -1,6 +1,7 @@
 \section{Capitolo 2}
 
 
+
 	\subsection{Esercizio 2.1}
 
 Determinare analiticamente gli zeri del polinomio 
@@ -8,7 +9,7 @@ Determinare analiticamente gli zeri del polinomio
 	P(x) = x^3 - 4x^2 + 5x - 2
 \end{equation*}
  e la loro molteplicità. Dire perché il metodo di bisezione è utilizzabile per approssimarne uno a partire dall’intervallo di confidenza $[a,b]=[0,3]$. A quale zero di P potrà tendere la successione generata dal metodo di bisezione a partire da tale intervallo? Costruire una tabella in cui si riportano il numero di iterazioni e di valutazioni di P richieste per valori decrescenti della tolleranza $tolx$.
-
+\PP
 Dato che $P(x) = x^3 - 4x^2 + 5x - 2 = (x-2)(x-1)^2$ le radici di $P(x)$ sono $x_1=1$ e $x_2=2$. Le molteplicità sono rispettivamente $m_1=2$ e $m_2=1$ (infatti $P'(x_1) = 0$). Rispetto all'intervallo $[a,b]=[0,3]$ si ha che $P(0) = -2$ e $P(3)=4$ ovvero il segno è discorde pertando, data la continuità della funzione, $P(x)$ assumerà sicuramente il valore $0$ in tale intervallo; è quindi possibile usare il metodo di bisezione partendo con $[a,b] = [0,3].$
 Il metodo di bisezione ha il pregio di poter calcolare il numero massimo di iterazioni a priori; dati $a,b$ estremi dell'intervallo e $tolx$ valore della tolleranza richiesta, la formula corrispondente è la seguente:
 \begin{equation*}
@@ -37,10 +38,11 @@ $10^{-10}$ & 35 & 37 \\
 \end{tabular}
 
 
+
 	\subsection{Esercizio 2.2}
 	
 Completare la tabella precedente riportando anche il numero di iterazioni e di valutazioni di $P$ richieste dal metodo di Newton, dal metodo delle corde e dal metodo delle secanti (con secondo termine della successione ottenuto con Newton) a partire dal punto $x_0=3$. Commentare i risultati riportati in tabella; è possibile utilizzare $x_0 = \frac{5}{3}$ come punto di innesco?
-
+\PP
 Non è possibile utilizzare il punto di innesco $x_0 = 5/3$ in quanto si ha che $P'(x_0) = 0$ e questo renderebbe non definita la frazione $\frac{f(x)}{f'(x)}$ utilizzata in tutti i metodi iterativi dell'esercizio.
 
 Utilizzando le seguenti funzioni Matlab che implementano rispettivamente il metodo di Newton: e secanti:
@@ -74,11 +76,11 @@ Per radici semplici infatti il metodo di Newton ha convergenza quadratica ($p=2$
 Inoltre si evidenzia il costo di due valutazioni di funzione per ogni iterazione del metodo di Newton, che ne aumenta il costo in caso di radici con molteplicità $m > 1$ dato che allo stesso tempo la convergenza diventa lineare.
 
 
+
 	\subsection{Esercizio 2.3}
 
 Costruire una seconda tabella analoga alla precedente relativa ai metodi di Newton, di Newton modificato e di accelerazione di Aitken applicati alla funzione polinomiale P a partire dal punto di innesco $x_0 = 0$. Commentare i risultati riportati in tabella.
-
-\par
+\PP
 Partendo da $x_0=0$ si spingono i metodi iterativi ad avvicinarsi alla radice $x_1=1$ che ha molteplicità pari a 2. In questo caso si ha che il metodo di newton classico ha convergenza solo lineare ma, dato che la molteplicità è conosciuta, è possibile utilizzare la versione modificata che ripristina la convergenza quadratica.
 La tabella seguente mostra il numero di iterazioni e di valutazione di funzione che vengono fatti da ciascun metodo:
 
@@ -115,7 +117,7 @@ Metodo di \lstinline{newton modificato}: è stato modificato il core stesso del 
 
 Definire una procedura iterativa basata sul metodo di Newton per approssimare $\sqrt{\alpha}$ per un assegnato $\alpha > 0$. Costruire una tabella dove
 si riportano le successive approssimazioni ottenute e i corrispondenti errori assoluti (usare l’approssimazione Matlab di $\sqrt{\alpha}$ per il calcolo dell'errore) nel caso in cui $\alpha = 5$ partendo da $x_0 = 5$.
-
+\PP
 Il problema di calcolare la $\sqrt{\alpha}$ può essere visto come la ricerca degli zeri di una funzione $f(x) \equiv x^2 - \alpha$ che due radici $x1=\sqrt{\alpha}$ e $x2= -\sqrt{\alpha}$ entrambe con molteplicità = 1; date
 \begin{equation*}
 	\begin{split}
@@ -158,8 +160,7 @@ i risultati che si ottengono sono:
 
 Definire una procedura iterativa basata sul metodo delle secanti sempre per approssimare $\sqrt{\alpha}$ per un assegnato $\alpha > 0$. Completare la tabella
 precedente aggiungendovi i risultati ottenuti con tale procedura partendo da $x_0 = 5$ e $x_1=3$. Commentare i risultati riportati in tabella.
-
-\par 
+\PP
 Anche in questo caso si utilizza un metodo iterativo per la ricerca degli zeri per la funzione $f(x) \equiv x^2 - \alpha$. Il metodo iterativo delle secanti ha la seguente espressione funzionale:
 \begin{equation*}
 	\begin{split}

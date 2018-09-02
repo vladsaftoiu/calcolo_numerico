@@ -3,6 +3,7 @@
 
 
 	\subsection{Esercizio 6.1}
+	
 Scrivere una function Matlab che generi la matrice sparsa $n \times n$ con $n > 10$, 
 $
 	A = 
@@ -19,13 +20,14 @@ $, con $a_{ij} =$
 	-1, & \text{se} & i = j 
 \end{empheq}
 Utilizzare, a questo fine, la function Matlab \lstinline{spdiags}.
-
+\PP
 La function che genera la matrice $A$ è la seguente:
 \lstinputlisting{./capitolo_6/sparse_diags.m}
 
 
 
 	\subsection{Esercizio 6.2}
+	
 Utilizzare il metodo delle potenze per calcolarne l’autovalore dominante della matrice $A_n$ del precedente esercizio, con una approssimazione $tol = 10^{-5}$, partendo da un vettore con elementi costanti. Riempire, quindi, la seguente
 tabella:
 \begin{tabular}{|c|c|c|}
@@ -38,8 +40,7 @@ n & numero di iterazioni effettuate & stima autovalore\\
 1000 & & \\
 \hline
 \end{tabular}
-
-\par
+\PP
 Il metodo delle potenze è implementato dalla seguente function:
 \lstinputlisting{./capitolo_6/power_method.m}
 la tabella viene generata usando lo script:
@@ -63,6 +64,7 @@ i risultati sono i seguenti:
 \end{tabular}
 
 
+
 	\subsection{Esercizio 6.3}
 
 Utilizzare il metodo di Jacobi per risolvere il sistema lineare
@@ -70,7 +72,7 @@ Utilizzare il metodo di Jacobi per risolvere il sistema lineare
 	A_n \mathbf{x} = \begin{pmatrix} 1 \\ \vdots \\ 1 \end{pmatrix}
 \end{equation*}
 dove $A_n$ è la matrice definita all'esercizio 6.1, con tolleranza $tol = 10^{-5}$, e partendo dal vettore nullo. Graficare il numero di iterazioni necessarie, rispetto alla dimensione $n$ del problema, con $n$ che varia da $100$ a $1000$ (con passo $20$).
-
+\PP
 La function che implementa il metodo di Jacobi è la seguente:
 \lstinputlisting{./capitolo_6/jacobi.m}
 lo script che la utilizza sugli $n = 100, 120, 140 ... 1000$ è:
@@ -79,9 +81,11 @@ che porta il seguente risultato:
 \TODO[inserire grafico]
 
 
-	\subsection{Esercizio 6.4}
-Ripetere una procedura analoga a quella del precedente esercizio utilizzando il medodo di Gauss-Seidel.
 
+	\subsection{Esercizio 6.4}
+	
+Ripetere una procedura analoga a quella del precedente esercizio utilizzando il medodo di Gauss-Seidel.
+\PP
 La function che implementa il metodo di Gauss-Seidel è la seguente:
 \lstinputlisting{./capitolo_6/gauss_seidel.m}
 lo script che la utilizza sugli $n = 100, 120, 140 ... 1000$ è:
@@ -92,12 +96,13 @@ che porta il seguente risultato:
 
 
 	\subsection{Esercizio 6.5}
+	
 Con riferimento al sistema lineare
 \begin{equation*}
 	A_n \mathbf{x} = \begin{pmatrix} 1 \\ \vdots \\ 1 \end{pmatrix}
 \end{equation*}
 con $n = 1000$, graficare la norma dei residui, rispetto all’indice di iterazione, gererati dai metodi di Jacobi e GaussSeidel.
 Utilizzare il formato \lstinline{semilogy} per realizzare il grafico, corredandolo di opportune \textit{labels}.
-
+\PP
 Lo script che utilizza le functions di Jacobi e Gauss-Seidel e ne stampa su un grafico la norma dei residui ad ogni iterazione è il seguente:
 \lstinputlisting{./capitolo_6/exercise_6_5.m}

@@ -1,10 +1,11 @@
 \section{Capitolo 3}
 
 
+
 	\subsection{Esercizio 3.1}
 
 Scrivere una function Matlab per la risoluzione di un sistema lineare con matrice dei coefficienti triangolare inferiore a diagonale unitaria. Inserire un esempio di utilizzo.
-
+\PP
 La function per risolvere il sistema su indicato è la seguente:
 
 \lstinputlisting{./capitolo_3/solve_t_inf_udiag.m}
@@ -41,6 +42,8 @@ ans =     0     0     0     0     0
 
 \end{lstlisting}
 
+
+
 	\subsection{Esercizio 3.2}
 
 Utilizzare l'algoritmo 3.6 del libro per stabilire se le seguenti matrici sono $sdp$ o no:
@@ -62,7 +65,7 @@ Utilizzare l'algoritmo 3.6 del libro per stabilire se le seguenti matrici sono $
 			2&3&-16&4\\
 		\end{pmatrix}
 	\]
-
+\PP
 Usando lo script: \\
 \lstinputlisting{./capitolo_1/sdp_test.m}
 che si appoggia all'algoritmo 3.6:\\
@@ -91,10 +94,11 @@ la matrice NON e' SDP
 \end{lstlisting}
 
 
+
 	\subsection{Esercizio 3.3}
 
 Scrivere una function Matlab che, avendo in ingresso un vettore $b$ contenente i termini noti del sistema lineare $Ax = b$ con $A$ sdp e l’output dell’Algoritmo 3.6 del libro (matrice $A$ riscritta nella porzione triangolare inferiore con i fattori $L$ e $D$ della fattorizzazione $LDL^{T}$ di $A$), ne calcoli efficientemente la soluzione.
-
+\PP
 \lstinputlisting{./capitolo_3/solve_with_ldl.m}
 
 
@@ -102,35 +106,53 @@ Scrivere una function Matlab che, avendo in ingresso un vettore $b$ contenente i
 	\subsection{Esercizio 3.4}
 
 Scrivere una function Matlab che, avendo in ingresso un vettore $b$ contenente i termini noti del sistema lineare $Ax = b$ e l’output dell’Algoritmo 3.7 del libro (matrice $A$ riscritta con la fattorizzazione $LU$ con pivoting parziale e il vettore $p$ delle permutazioni), ne calcoli efficientemente la soluzione.
-
+\PP
 \lstinputlisting{./capitolo_3/solve_with_lu_pivoting.m}
+
 
 
 	\subsection{Esercizio 3.5}
 
  Inserire alcuni esempi di utilizzo delle due function implementate per i punti 3 e 4, scegliendo per ciascuno di essi un vettore $\tilde{x}$ e ponendo $b = A\tilde{x}$. Riportare $\tilde{x}$ e la soluzione $x$ da essi prodotta. Costruire anche una tabella in cui, per ogni esempio considerato, si riportano il numero di condizionamento di $A$ in norma 2 (usare $cond$ di Matlab) e le quantità $\frac{\norm{r}}{\norm{b}}$ e $\frac{\norm{x-\tilde{x}}}{\norm{\tilde{x}}}$.
-
+\PP
 Utilizzando lo script:
 
 \lstinputlisting{./capitolo_3/exercise_5.m}
 
-si verifica che....
-\TODO[inserire tabella carina con risultati dello script e considerazioni]
+si ottengono i seguenti risultati:\\
+\begin{tabular}{ | c | r | r | r | r | r | }
+\hline
+        \textbf{m.size} & \textbf{m.cond} & $\mathbf{e}_{LU} $ & $\mathbf{r}_{LU} $  &  $\mathbf{e}_{LDL}$  &  $\mathbf{r}_{LDL} $ \\
+\hline
+         50    &     8.81061e+13 		&  2.19014e-11  &  2.16078e-16  &  3.98620e-12  &  1.81091e-16  \\
+        100    &    1.26931e+14  	&  4.20607e-11  &  2.86586e-16  &  5.56861e-12  &  3.75498e-16  \\
+        150    &    1.55650e+23  	&  1.67742e-07  &  2.59114e-16  &  8.49812e-08  &  2.99143e-16  \\
+        200    &    1.79158e+15  	&  7.86844e-11  &  2.19720e-16  &  7.63123e-12  &  2.55269e-16  \\
+        250    &    7.91931e+16  	&  1.02967e-10  &  6.81237e-16  &  8.40258e-10  &  2.82641e-16  \\
+        300    &    7.07840e+15  	&  1.21648e-10  &  5.02170e-16  &  1.72525e-10  &  3.61705e-16  \\
+        350    &    7.83111e+17  	&  2.42229e-09  &  3.73378e-16  &  3.27147e-09  &  4.57571e-16  \\
+        400    &    7.25513e+18  	&  3.86121e-10  &  6.12285e-16  &  1.24177e-09  &  3.39125e-16  \\
+        450    &    2.18150e+20  	&  8.55091e-09  &  4.06969e-16  &  7.02023e-09  &  5.46399e-16  \\
+        500    &    1.37680e+17  	&  1.94177e-10  &  7.33512e-16  &  1.17556e-10  &  3.54496e-16  \\
+\hline
+\end{tabular}
+
 
 
 	\subsection{Esercizio 3.6}
 
 Sia $A = \begin{pmatrix} \epsilon & 1 \\ 1 & 1  \end{pmatrix}$ con $\epsilon = 10^{-13}$. Definire $L$ triangolare inferiore a diagonale unitaria e $U$ triangolare superiore in modo che il prodotto $LU$ sia la fattorizzazione $LU$ di $A$ e, posto $\mathbf{b} = A\mathbf{e}$, con $\mathbf{e} = (1, 1)^T$, confrontare l'accuratezza della soluzione che si ottiene usando il comando $U\setminus(L\setminus \mathbf{b})$ (Gauss senza pivoting) e il comando $A\setminus \mathbf{b}$ (Gauss con pivoting).
-
+\PP
 Una fattorizzazione $LU$ di A è: $L = \begin{pmatrix} 1 & 0 \\ \frac{1}{\epsilon} & 1  \end{pmatrix}, U = \begin{pmatrix} \epsilon & 1 \\ 0 & -\epsilon  \end{pmatrix}$, tuttavia eseguendo $U\setminus(L\setminus \mathbf{b})$ si ottiene $\mathbf{x} = (0.999200722162641, 1.000000000000000)^T$ ed un warning: `\textit{Matrix is close to singular or badly scaled. Results may be inaccurate. RCOND =
 1.000000e-26}`. Infatti si verifica subito che numero di condizionamento delle matrici L ed U non sono buoni: entrambi sono dell'ordine di $e+25$.
 Lo script usato per questo esercizio è:
 \lstinputlisting{./capitolo_3/exercise_6.m}
 
 
+
 	\subsection{Esercizio 3.7}
 Scrivere una function Matlab specifica per la risoluzione di un sistema lineare con matrice dei coefficienti $A \in \mathcal{R}^{n \times n}$ bidiagonale inferiore a diagonale unitaria di Toeplitz, specificabile con uno scalare $\alpha$. Sperimentarne e commentarne le prestazioni (considerare il numero di condizionamento della matrice) nel caso in cui $n = 12$ e $\alpha =100$ ponendo dapprima $b = (1, 101, \dots , 101)^T$ (soluzione esatta $\tilde{x} = (1, \dots , 1)^T$ ) e quindi $b = 0.1 * (1, 101, \dots , 101)^T$ (soluzione esatta $\tilde{x} = (0.1, \dots , 0.1)^T$).
-
+\PP
 La funzione per risolvere una matrice bidiagonale inferiore di Toeplitz è la seguente:
 \lstinputlisting{./capitolo_3/solve_bidiagonal_toeplitz.m}
 Dato che la matrice bidiagonale inferiore di T. è (se non ho capito male) della forma:
@@ -154,16 +176,19 @@ La funzione è stata testata verificando la $\mathbf{\tilde{x}}$ risultato dell'
 
 
 	\subsection{Esercizio 3.8}
-Scrivere una function che, dato un sistema lineare sovradeterminato $A\mathbf{x}=\mathbf{b}$ con $A \in \mathcal{R}^{m \times n}, m > n, rank(A) = n$ e $\mathbf{b} \in \mathcal{R}^m$, preso come input $\mathbf{b}$ e l'output dell'algoritmo 3.8 del libro (matrice $A$ riscritta con la parte significativa di $R$ e la parte significativa dei vettori di Householder normalizzati con prima componente unitaria), ne calcoli efficientemente la soluzione nel senso dei minimi quadrati.
 
+Scrivere una function che, dato un sistema lineare sovradeterminato $A\mathbf{x}=\mathbf{b}$ con $A \in \mathcal{R}^{m \times n}, m > n, rank(A) = n$ e $\mathbf{b} \in \mathcal{R}^m$, preso come input $\mathbf{b}$ e l'output dell'algoritmo 3.8 del libro (matrice $A$ riscritta con la parte significativa di $R$ e la parte significativa dei vettori di Householder normalizzati con prima componente unitaria), ne calcoli efficientemente la soluzione nel senso dei minimi quadrati.
+\PP
 La function è la seguente:
 \lstinputlisting{./capitolo_3/solve_with_householder.m}
 \TODO{verificare porzione core, che cosa fa e se si può riscrivere}
 
  
+ 
 	\subsection{Esercizio 3.9}
+	
 Inserire due esempi di utilizzo della function implementata per il punto 8 e confrontare la soluzione ottenuta con quella fornita dal comando $A\setminus \mathbf{b}$.
-
+\PP
 La function \lstinline{solve_with_householder} è stata testata con il seguente script:
 \lstinputlisting{./capitolo_3/solve_with_householder_test.m}
 Nel primo esempio viene usata una matrice $170 \times 15$ ottenendo un risultato che rispetto a $A\setminus \mathbf{b}$ differisce di un ordine $10^{-12}$, nel secondo esempio si usa la matrice dell'esercizio 3.31 del libro di testo, la differenza qui è dell'ordine di $10^{-15}$.
@@ -171,16 +196,18 @@ Nel primo esempio viene usata una matrice $170 \times 15$ ottenendo un risultato
 
  
 	\subsection{Esercizio 3.10}
+	
 Scrivere una function che realizza il metodo di Newton per un sistema nonlineare (prevedere un numero massimo di iterazioni e utilizzare il criterio di arresto basato sull’incremento in norma eucliedea). Utilizzare la function costruita al punto 4 per la risoluzione del sistema lineare ad ogni iterazione.
-
+\PP
 	La function che implementa il metodo iterativo di Newton è la seguente:
 \lstinputlisting{./capitolo_3/newton_nonlinear.m}
 
 
  
 	\subsection{Esercizio 3.11}
+	
 Verificato che la funzione $f(x_1,x_2) = x_1^2 + x_2^3 - x_1x_2$ ha un punto di minimo relativo in $(1/12, 1/6)$, costruire una tabella in cui si riportano il numero di iterazioni eseguite, e la norma eucliedea dell’ultimo incremento e quella dell’ errore con cui viene approssimato il risultato esatto utilizzando la function sviluppata al punto precedente per valori delle tolleranze pari a $10^{-t}$, con $t=3,6$. Utilizzare $(1/2, 1/2)$ come punto di innesco, verificare che la norma dell'errore è molto più piccola di quella dell'incremento (come mai?).
-
+\PP
 Utilizzando lo script:
 \lstinputlisting{./capitolo_3/exercise_3_11.m}
 si verifica che il punto $(1/12, 1/6)$ è stazionario e, utilizzando una versione modificata della function all'esercizio precedente, si estrae la tabella delle norme di incremente e di errore ad ogni iterazione.
