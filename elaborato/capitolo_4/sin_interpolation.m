@@ -8,7 +8,7 @@ function [] = sin_interpolation( )
     plot(ab, newton_interpolation(xi, sin(xi), ab), 'g' ); %green
     hold on;
     plot(ab, lagrange(xi, sin(xi), ab), 'b' ); %blue
-    % why not working well?
+    % check why not working ...
     %plot(ab, hermite(xi, sin(xi), cos(xi), ab), 'm') %magenta
     legend( 'interpolation nodes', 'sin', 'newton', 'lagrange');
 end
