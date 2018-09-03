@@ -1,9 +1,15 @@
-do()
+format long;
+[y,r] = do(20);
+table(y,r,4-y)
 
-function [] = do( )
-    for j=1:10
+function [y, r] = do( n )
+    y = zeros(n,1);
+    r = zeros(n,1);
+        
+    for j=1:n
         h = 10^-j;
-        phi(@(x) x^4, h, 1)
+        y(j)=phi(@(x) x^4, h, 1);
+        r(j)=h^2;
     end
 end
 

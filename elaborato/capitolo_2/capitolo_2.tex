@@ -141,17 +141,16 @@ che richiama la funzione:
 \lstinputlisting{./capitolo_2/newton_sqrt.m}
 
 i risultati che si ottengono sono:
-\begin{tabular}{|r|r|}
+\begin{tabular}{ r | r }
+\multicolumn{1}{ c |} {\textbf{x}} & \multicolumn{1}{c} {\textbf{abs\_e}} \\ 
 \hline
-\rowcolor[HTML]{303498} 
-\multicolumn{1}{|c|}{\cellcolor[HTML]{303498}{\color[HTML]{FFFFFF} \textbf{x}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{303498}{\color[HTML]{FFFFFF} \textbf{abs\_e}}} \\ \hline
-3                                                                               & 0.76393202250021                                                                    \\ \hline
-2.33333333333333                                                                & 0.0972653558335437                                                                  \\ \hline
-2.23809523809524                                                                & 0.00202726059544833                                                                 \\ \hline
-2.23606889564336                                                                & 9.18143573613861e-07                                                                \\ \hline
-2.23606797749998                                                                & 1.88293824976427e-13                                                                \\ \hline
-2.23606797749979                                                                & 0                                                                                   \\ \hline
-2.23606797749979                                                                & 0                                                                                   \\ \hline
+3                                                                               & 0.76393202250021                                                                    \\ 
+2.33333333333333                                                                & 0.0972653558335437                                                                  \\ 
+2.23809523809524                                                                & 0.00202726059544833                                                                 \\ 
+2.23606889564336                                                                & 9.18143573613861e-07                                                                \\ 
+2.23606797749998                                                                & 1.88293824976427e-13                                                                \\ 
+2.23606797749979                                                                & 0                                                                                   \\ 
+2.23606797749979                                                                & 0                                                                                   \\ 
 \end{tabular}
 
 
@@ -187,21 +186,21 @@ che richiama la funzione:
 \lstinputlisting{./capitolo_2/secanti_sqrt.m}
 
 i risultati che si ottengono sono:
-\begin{tabular}{|r|r|}
-\hline
-\rowcolor[HTML]{303498} 
-\multicolumn{1}{|c|}{\cellcolor[HTML]{303498}{\color[HTML]{FFFFFF} \textbf{x}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{303498}{\color[HTML]{FFFFFF} \textbf{abs\_e}}} \\ \hline
-5                                                                               & 2.76393202250021                                                                    \\ \hline
-3                                                                               & 0.76393202250021                                                                    \\ \hline
-2.5                                                                             & 0.26393202250021                                                                    \\ \hline
-2.27272727272727                                                                & 0.0366592952274831                                                                  \\ \hline
-2.23809523809524                                                                & 0.00202726059544833                                                                 \\ \hline
-2.23608445297505                                                                & 1.6475475258293e-05                                                                 \\ \hline
-2.23606798496486                                                                & 7.46507344828728e-09                                                                \\ \hline
-2.23606797749982                                                                & 2.75335310107039e-14                                                                \\ \hline
-2.23606797749979                                                                & 4.44089209850063e-16                                                                \\ \hline
-2.23606797749979                                                                & 0                                                                                   \\ \hline
-2.23606797749979                                                                & 0                                                                                   \\ \hline
-\end{tabular}
+\begin{tabular}{ r | r }
 
+\multicolumn{1}{ c |} {\textbf{x}} & \multicolumn{1}{c} {\textbf{abs\_e}} \\ 
+\hline
+5                                                                               & 2.76393202250021                                                                    \\ 
+3                                                                               & 0.76393202250021                                                                    \\ 
+2.5                                                                             & 0.26393202250021                                                                    \\ 
+2.27272727272727                                                                & 0.0366592952274831                                                                  \\ 
+2.23809523809524                                                                & 0.00202726059544833                                                                 \\ 
+2.23608445297505                                                                & 1.6475475258293e-05                                                                 \\ 
+2.23606798496486                                                                & 7.46507344828728e-09                                                                \\ 
+2.23606797749982                                                                & 2.75335310107039e-14                                                                \\ 
+2.23606797749979                                                                & 4.44089209850063e-16                                                                \\ 
+2.23606797749979                                                                & 0                                                                                   \\ 
+2.23606797749979                                                                & 0                                                                                   \\ 
+\end{tabular}
+\PP
 Si verifica subito che il metodo delle secanti converge più lentamente rispetto al calcolo della stessa radice usando il metodo di newton, questo perché il metodo di newton ha convergenza quadratica mentre il metodo delle secanti leggermente inferiore ($\approx 1.6$).
