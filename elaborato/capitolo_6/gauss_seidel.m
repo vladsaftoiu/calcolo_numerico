@@ -10,11 +10,12 @@ function [ x, i ] = gauss_seidel( A, b, tol, x0, maxit )
 
     n = length(b);
     if ( nargin <= 3 )
-        x0 = ones(n, 1);
+        x0 = zeros(n, 1);
     end
     if (nargin <= 4)
         maxit = 100 * n * ( -log(tol) );
     end
+    
     x = x0;
     
     for i = 1 : maxit

@@ -6,7 +6,7 @@ for i = 1 : 46
     n = 100 + (i-1) * 20;
     
     A = sparse_diags( n );
-    [ x, its ] = gauss_seidel( A, ones(n, 1),  1e-5 );
+    [ x, its ] = gauss_seidel( A, ones(n, 1), 1e-5 );
     iterations(i) = its;
     
 end

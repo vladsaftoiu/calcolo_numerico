@@ -7,8 +7,7 @@ function [ y ] = hermite( xi, fi, f1i, x )
 %   x: vector of points which are to be evaluated
     
     n = length(xi) -1; 
-   
-   
+      
     fh = zeros(1, 2*n+2); %one by one merge of fi and f1i
     xh = zeros(1, 2*n+2); %double the abscisssas
     for i = 2 : 2 : 2*n+2
@@ -22,7 +21,7 @@ function [ y ] = hermite( xi, fi, f1i, x )
     
     %horner general
     y = hfd(n+1) * ones(size(x));
-    for l = n+1 : -1 : 1
+    for l = n : -1 : 1
         y = y.*(x-xh(l)) + hfd(l);
     end
 end

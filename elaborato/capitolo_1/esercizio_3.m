@@ -1,15 +1,17 @@
 format long;
-[y,r] = do(20);
-table(y,r,4-y)
+[h,y,r] = do(20);
+table(h,y,r,4-y)
 
-function [y, r] = do( n )
+function [h, y, r] = do( n )
     y = zeros(n,1);
     r = zeros(n,1);
-        
+    h = zeros(n,1);
+    twice_h = 
+    
     for j=1:n
-        h = 10^-j;
-        y(j)=phi(@(x) x^4, h, 1);
-        r(j)=h^2;
+        h(j) = 10^-j;
+        y(j)=phi(@(x) x^4, h(j), 1);
+        r(j)=h(j)^2;
     end
 end
 
