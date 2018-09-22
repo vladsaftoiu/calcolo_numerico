@@ -7,5 +7,4 @@ function [ A ] = sparse_diags( n )
     d = [ -10 -1 0 1 10 ]';
     
     A = full( spdiags( B, d, n, n ) );
-    %A =  spdiags( B, d, n,n ) ;
 end

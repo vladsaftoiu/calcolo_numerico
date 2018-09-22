@@ -12,7 +12,7 @@ for n = 1 :10
     eigenvalues(n) = l;
     
     %since for this matrix eigs are negative, we take min as l_1
-    eigs(n) = min(eig(A)); 
+    eigs(n) = max(eig(A)); 
 end
 
 table( ns, iterations, eigenvalues, eigs, eigenvalues-eigs )
